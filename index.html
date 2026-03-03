@@ -137,35 +137,6 @@
 
 <!-- Password Gate -->
 <div id="pw-overlay">
-  <div class="logo">&#x1F916;</div>
-  <div class="brand">cobo &middot; Vision &amp; Roadmap</div>
-  <div class="box">
-    <h2>Interner Zugang</h2>
-    <p>Diese Pr&#xE4;sentation ist nur f&#xFC;r das vengine Team.</p>
-    <input type="password" id="pw-input" placeholder="Passwort eingeben" onkeydown="if(event.key==='Enter')checkPw()">
-    <button onclick="checkPw()">&#x2192; &#xD6;ffnen</button>
-    <div class="err" id="pw-err">Falsches Passwort.</div>
-  </div>
-</div>
-<script>
-  const HASH = '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918';
-  async function checkPw() {
-    const val = document.getElementById('pw-input').value;
-    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(val));
-    const hex = Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
-    if (hex === HASH) {
-      document.getElementById('pw-overlay').style.display = 'none';
-      sessionStorage.setItem('cobo-auth','1');
-    } else {
-      document.getElementById('pw-err').style.display = 'block';
-      document.getElementById('pw-input').value = '';
-    }
-  }
-  if (sessionStorage.getItem('cobo-auth') === '1') document.getElementById('pw-overlay').style.display = 'none';
-</script>
-
-<!-- Password Gate -->
-<div id="pw-overlay">
   <div class="logo">🤖</div>
   <div class="brand">cobo &middot; Vision &amp; Roadmap</div>
   <div class="box">
