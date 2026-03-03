@@ -134,18 +134,7 @@
   </style>
 </head>
 <body>
-
 <script>
-  (function() {
-    if (sessionStorage.getItem('cobo-auth') === '1') return;
-    var pw = prompt('Passwort eingeben:');
-    if (pw !== 'vengineadmin') {
-      document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:Inter,sans-serif;color:#6B7280;">Zugriff verweigert. Bitte Seite neu laden.</div>';
-      return;
-    }
-    sessionStorage.setItem('cobo-auth', '1');
-  })();
-</script><script>
   Reveal.initialize({
     hash: true,
     controls: true,
