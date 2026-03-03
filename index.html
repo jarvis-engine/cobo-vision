@@ -87,8 +87,115 @@
     .footer { position: absolute; bottom: 20px; right: 40px; font-size: 0.55em; color: var(--muted); }
     .footer span { color: var(--vengine); font-weight: 600; }
   </style>
+  <style>
+    #pw-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: linear-gradient(135deg, #6D28D9 0%, #8B5CF6 100%);
+      display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 24px;
+    }
+    #pw-overlay .box {
+      background: white; border-radius: 16px; padding: 40px 48px; width: 380px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+    #pw-overlay h2 { font-family: 'Inter',sans-serif; font-size: 1.2em; font-weight: 700; color: #0F0F1A; margin: 0 0 6px; }
+    #pw-overlay p { font-family: 'Inter',sans-serif; font-size: 0.8em; color: #6B7280; margin: 0 0 20px; }
+    #pw-overlay input {
+      width: 100%; padding: 10px 14px; border: 1px solid #E5E7EB; border-radius: 8px;
+      font-size: 0.9em; font-family: 'Inter',sans-serif; outline: none; box-sizing: border-box;
+      margin-bottom: 12px; transition: border-color 0.2s;
+    }
+    #pw-overlay input:focus { border-color: #7C3AED; }
+    #pw-overlay button {
+      width: 100%; padding: 11px; background: #7C3AED; color: white; border: none;
+      border-radius: 8px; font-size: 0.9em; font-weight: 600; cursor: pointer;
+      font-family: 'Inter',sans-serif; transition: background 0.2s;
+    }
+    #pw-overlay button:hover { background: #6D28D9; }
+    #pw-overlay .err { font-size: 0.75em; color: #EF4444; background: #FEF2F2; padding: 8px 12px; border-radius: 8px; border: 1px solid #FECACA; display: none; margin-top: 8px; }
+    #pw-overlay .logo { font-size: 2.5em; }
+    #pw-overlay .brand { color: white; font-family: 'Inter',sans-serif; font-size: 1.4em; font-weight: 700; }
+  </style>
+  <style>
+    #pw-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: linear-gradient(135deg, #6D28D9 0%, #8B5CF6 100%);
+      display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 24px;
+    }
+    #pw-overlay .box { background: white; border-radius: 16px; padding: 40px 48px; width: 380px; box-shadow: 0 20px 60px rgba(0,0,0,0.25); }
+    #pw-overlay h2 { font-family: 'Inter',sans-serif; font-size: 1.2em; font-weight: 700; color: #0F0F1A; margin: 0 0 6px; }
+    #pw-overlay p { font-family: 'Inter',sans-serif; font-size: 0.8em; color: #6B7280; margin: 0 0 20px; }
+    #pw-overlay input { width: 100%; padding: 10px 14px; border: 1px solid #E5E7EB; border-radius: 8px; font-size: 0.9em; font-family: 'Inter',sans-serif; outline: none; box-sizing: border-box; margin-bottom: 12px; transition: border-color 0.2s; }
+    #pw-overlay input:focus { border-color: #7C3AED; }
+    #pw-overlay button { width: 100%; padding: 11px; background: #7C3AED; color: white; border: none; border-radius: 8px; font-size: 0.9em; font-weight: 600; cursor: pointer; font-family: 'Inter',sans-serif; }
+    #pw-overlay button:hover { background: #6D28D9; }
+    #pw-overlay .err { font-size: 0.75em; color: #EF4444; background: #FEF2F2; padding: 8px 12px; border-radius: 8px; border: 1px solid #FECACA; display: none; margin-top: 8px; }
+    #pw-overlay .logo { font-size: 2.5em; }
+    #pw-overlay .brand { color: white; font-family: 'Inter',sans-serif; font-size: 1.4em; font-weight: 700; }
+  </style>
 </head>
 <body>
+
+<!-- Password Gate -->
+<div id="pw-overlay">
+  <div class="logo">&#x1F916;</div>
+  <div class="brand">cobo &middot; Vision &amp; Roadmap</div>
+  <div class="box">
+    <h2>Interner Zugang</h2>
+    <p>Diese Pr&#xE4;sentation ist nur f&#xFC;r das vengine Team.</p>
+    <input type="password" id="pw-input" placeholder="Passwort eingeben" onkeydown="if(event.key==='Enter')checkPw()">
+    <button onclick="checkPw()">&#x2192; &#xD6;ffnen</button>
+    <div class="err" id="pw-err">Falsches Passwort.</div>
+  </div>
+</div>
+<script>
+  const HASH = '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918';
+  async function checkPw() {
+    const val = document.getElementById('pw-input').value;
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(val));
+    const hex = Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    if (hex === HASH) {
+      document.getElementById('pw-overlay').style.display = 'none';
+      sessionStorage.setItem('cobo-auth','1');
+    } else {
+      document.getElementById('pw-err').style.display = 'block';
+      document.getElementById('pw-input').value = '';
+    }
+  }
+  if (sessionStorage.getItem('cobo-auth') === '1') document.getElementById('pw-overlay').style.display = 'none';
+</script>
+
+<!-- Password Gate -->
+<div id="pw-overlay">
+  <div class="logo">🤖</div>
+  <div class="brand">cobo &middot; Vision &amp; Roadmap</div>
+  <div class="box">
+    <h2>Interner Zugang</h2>
+    <p>Diese Präsentation ist nur für das vengine Team.</p>
+    <input type="password" id="pw-input" placeholder="Passwort eingeben" onkeydown="if(event.key==='Enter')checkPw()">
+    <button onclick="checkPw()">&rarr; Öffnen</button>
+    <div class="err" id="pw-err">Falsches Passwort.</div>
+  </div>
+</div>
+
+<script>
+  const HASH = '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918';
+  async function checkPw() {
+    const val = document.getElementById('pw-input').value;
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(val));
+    const hex = Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    if (hex === HASH) {
+      document.getElementById('pw-overlay').style.display = 'none';
+      sessionStorage.setItem('cobo-auth','1');
+    } else {
+      document.getElementById('pw-err').style.display = 'block';
+      document.getElementById('pw-input').value = '';
+    }
+  }
+  if (sessionStorage.getItem('cobo-auth') === '1') {
+    document.getElementById('pw-overlay').style.display = 'none';
+  }
+<\/script>
+
 <div class="reveal">
 <div class="slides">
 
