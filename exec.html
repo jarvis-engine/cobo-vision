@@ -3,14 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>cobo – Execution Roadmap Q1–Q4 2026</title>
+  <title>cobo Strategie 2026 — Roadmap & GTM</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root { --v:#7C3AED; --vd:#6D28D9; --fl:#EDE9FE; --tx:#0F0F1A; --mu:#6B7280; --bd:#E5E7EB;
-      --now:#16A34A; --q2:#7C3AED; --h1:#EA580C; --h2:#0284C7; }
+    :root { --v:#7C3AED; --vd:#6D28D9; --fl:#EDE9FE; --tx:#0F0F1A; --mu:#6B7280; --bd:#E5E7EB; }
     .reveal { font-family:'Inter',sans-serif; }
     .reveal h1,.reveal h2,.reveal h3,.reveal h4 { font-family:'Inter',sans-serif; letter-spacing:-0.03em; }
     .reveal .slides section { text-align:left; }
@@ -20,65 +19,38 @@
     .ft span { color:var(--v); font-weight:600; }
     .g2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
     .g3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
+    .card { background:#F9FAFB; border:1px solid var(--bd); border-radius:12px; padding:18px 20px; }
+    .card.p { background:var(--fl); border-color:#C4B5FD; }
 
-    /* Timeline blocks */
-    .hz { border-radius:12px; padding:18px 20px; }
-    .hz-now { background:#F0FDF4; border:2px solid #86EFAC; }
-    .hz-q2  { background:var(--fl); border:2px solid #C4B5FD; }
-    .hz-h1  { background:#FFF7ED; border:2px solid #FED7AA; }
-    .hz-h2  { background:#EFF6FF; border:2px solid #BFDBFE; }
-    .hz .hl { font-size:.6em; font-weight:700; text-transform:uppercase; letter-spacing:.08em; margin-bottom:6px; }
-    .hz-now .hl { color:var(--now); }
-    .hz-q2  .hl { color:var(--q2); }
-    .hz-h1  .hl { color:var(--h1); }
-    .hz-h2  .hl { color:var(--h2); }
-    .hz h3 { font-size:.85em; font-weight:700; color:var(--tx); margin:0 0 10px; }
-    .hz ul { margin:0; padding-left:16px; }
-    .hz li { font-size:.65em; color:#374151; margin-bottom:5px; line-height:1.4; }
+    /* Phase styling */
+    .phase-block { border-radius:14px; padding:20px 24px; }
+    .ph1 { background:linear-gradient(135deg,#F0FDF4,#DCFCE7); border:2px solid #86EFAC; }
+    .ph2 { background:linear-gradient(135deg,var(--fl),#DDD6FE); border:2px solid #C4B5FD; }
+    .ph3 { background:linear-gradient(135deg,#FFF7ED,#FED7AA); border:2px solid #FDBA74; }
+    .ph-tag { display:inline-block; border-radius:20px; padding:3px 12px; font-size:.58em; font-weight:700; margin-bottom:10px; }
+    .ph1 .ph-tag { background:#BBF7D0; color:#15803D; }
+    .ph2 .ph-tag { background:#C4B5FD; color:#5B21B6; }
+    .ph3 .ph-tag { background:#FED7AA; color:#C2410C; }
+    .phase-block h3 { font-size:.95em; font-weight:700; color:var(--tx); margin:0 0 6px; }
+    .phase-block .tagline { font-size:.68em; color:var(--mu); font-style:italic; margin:0 0 14px; }
+    .phase-block ul { margin:0; padding-left:18px; }
+    .phase-block li { font-size:.65em; color:#374151; margin-bottom:5px; line-height:1.45; }
 
-    /* Task rows */
-    .task-row { display:flex; align-items:flex-start; gap:12px; padding:10px 14px; border-radius:8px; margin-bottom:8px; }
-    .task-row:nth-child(odd) { background:#F9FAFB; }
-    .task-row .dot { min-width:10px; height:10px; border-radius:50%; margin-top:4px; }
-    .dot-red { background:#EF4444; }
-    .dot-yel { background:#F59E0B; }
-    .dot-grn { background:#10B981; }
-    .dot-blu { background:#3B82F6; }
-    .task-row .task-title { font-size:.72em; font-weight:600; color:var(--tx); }
-    .task-row .task-meta { font-size:.62em; color:var(--mu); margin-top:2px; }
-    .task-row .task-owner { font-size:.6em; background:var(--fl); color:var(--v); border-radius:4px; padding:1px 8px; font-weight:600; white-space:nowrap; }
+    /* Action items */
+    .action { display:flex; gap:12px; align-items:flex-start; padding:10px 14px; border-radius:8px; margin-bottom:8px; }
+    .action:nth-child(odd) { background:#F9FAFB; }
+    .action .ic { font-size:1.1em; min-width:22px; text-align:center; }
+    .action .body { flex:1; }
+    .action .title { font-size:.74em; font-weight:600; color:var(--tx); }
+    .action .sub { font-size:.63em; color:var(--mu); margin-top:2px; line-height:1.4; }
+    .action .badge { font-size:.58em; background:var(--fl); color:var(--v); border-radius:4px; padding:2px 8px; font-weight:600; white-space:nowrap; }
 
-    /* Status pills */
-    .pill { display:inline-block; border-radius:20px; padding:2px 10px; font-size:.58em; font-weight:600; }
-    .pill-done { background:#DCFCE7; color:#15803D; }
-    .pill-wip  { background:var(--fl); color:var(--v); }
-    .pill-open { background:#FEF3C7; color:#92400E; }
-    .pill-block{ background:#FEE2E2; color:#B91C1C; }
+    /* Quote block */
+    .quote { background:var(--fl); border-left:4px solid var(--v); border-radius:0 12px 12px 0; padding:18px 24px; margin:16px 0; }
+    .quote p { font-size:.85em; font-style:italic; color:var(--tx); margin:0; line-height:1.65; }
 
-    /* Status snapshot */
-    .snap { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
-    .snap-card { border-radius:10px; padding:16px; border:1px solid var(--bd); }
-    .snap-card .sc-label { font-size:.58em; font-weight:700; text-transform:uppercase; letter-spacing:.08em; margin-bottom:6px; }
-    .snap-card .sc-val { font-size:1.5em; font-weight:800; }
-    .snap-card p { font-size:.63em; color:var(--mu); margin:6px 0 0; line-height:1.4; }
-
-    /* Blocker */
-    .blocker { display:flex; align-items:flex-start; gap:14px; padding:12px 16px; background:#FEF2F2; border:1px solid #FECACA; border-radius:10px; margin-bottom:10px; }
-    .blocker .bi { font-size:1.2em; }
-    .blocker h4 { font-size:.75em; font-weight:600; color:#DC2626; margin:0 0 3px; }
-    .blocker p { font-size:.65em; color:#7F1D1D; margin:0; }
-
-    /* Decision matrix */
-    .dec-row { display:grid; grid-template-columns:2fr 1fr 1fr 2fr; gap:8px; align-items:center; padding:8px 10px; border-radius:6px; font-size:.65em; }
-    .dec-row:nth-child(even) { background:#F9FAFB; }
-    .dec-hd { font-weight:700; color:var(--mu); font-size:.58em; text-transform:uppercase; letter-spacing:.08em; padding:4px 10px; }
-
-    /* KPI progress */
-    .kpi-row { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
-    .kpi-row .kpi-label { font-size:.68em; font-weight:500; color:var(--tx); min-width:180px; }
-    .kpi-row .kpi-bar { flex:1; height:8px; background:#E5E7EB; border-radius:4px; overflow:hidden; }
-    .kpi-row .kpi-fill { height:100%; border-radius:4px; }
-    .kpi-row .kpi-val { font-size:.65em; font-weight:700; color:var(--v); min-width:40px; text-align:right; }
+    /* Stat callout */
+    .stat { text-align:center; padding:16px 10px; border-radius:12px; }
   </style>
 </head>
 <body>
@@ -88,371 +60,287 @@
 <!-- 1 TITLE -->
 <section data-background-gradient="linear-gradient(135deg,#6D28D9 0%,#8B5CF6 100%)">
   <div style="padding:20px 0;color:white;">
-    <div style="display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:4px 16px;font-size:.7em;margin-bottom:20px;">PM · M&auml;rz 2026 · Intern</div>
-    <h1 style="color:white;font-size:2.6em;font-weight:800;margin-bottom:12px;">&#x1F916; cobo</h1>
-    <p style="font-size:1.2em;font-weight:400;color:rgba(255,255,255,.9);">Execution Roadmap 2026</p>
-    <p style="font-size:.85em;color:rgba(255,255,255,.65);margin-top:10px;">N&auml;chste Wochen &rarr; 3 Monate &rarr; Jahresplan &rarr; Ausblick</p>
-    <p style="font-size:.65em;opacity:.4;margin-top:40px;">vengine GmbH &middot; Vertraulich</p>
+    <div style="display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:4px 16px;font-size:.7em;margin-bottom:20px;">Strategie &middot; M&auml;rz 2026 &middot; Intern</div>
+    <h1 style="color:white;font-size:2.6em;font-weight:800;margin-bottom:10px;">&#x1F916; cobo</h1>
+    <p style="font-size:1.25em;font-weight:600;color:rgba(255,255,255,.95);">Strategie 2026 &mdash; Roadmap &amp; GTM</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:600px;margin:32px auto 0;">
+      <div style="background:rgba(255,255,255,.12);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:.6em;opacity:.7;margin-bottom:4px;">Phase 1</div>
+        <div style="font-size:.8em;font-weight:700;">0&ndash;3 Monate</div>
+        <div style="font-size:.62em;opacity:.75;margin-top:2px;">Validierung</div>
+      </div>
+      <div style="background:rgba(255,255,255,.12);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:.6em;opacity:.7;margin-bottom:4px;">Phase 2</div>
+        <div style="font-size:.8em;font-weight:700;">3&ndash;12 Monate</div>
+        <div style="font-size:.62em;opacity:.75;margin-top:2px;">Skalierung</div>
+      </div>
+      <div style="background:rgba(255,255,255,.12);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:.6em;opacity:.7;margin-bottom:4px;">Phase 3</div>
+        <div style="font-size:.8em;font-weight:700;">ab 2027</div>
+        <div style="font-size:.62em;opacity:.75;margin-top:2px;">Plattform</div>
+      </div>
+    </div>
+    <p style="font-size:.62em;opacity:.4;margin-top:28px;">vengine GmbH &middot; Vertraulich</p>
   </div>
 </section>
 
-<!-- 2 STATUS JETZT -->
+<!-- 2 WHERE WE ARE -->
 <section>
-  <span class="lbl">Status heute</span>
-  <h2>Wo stehen wir? — Stand 03.03.2026</h2>
-  <div class="snap">
-    <div class="snap-card" style="border-color:#86EFAC;">
-      <div class="sc-label" style="color:var(--now);">&#x2705; Deployed</div>
-      <div class="sc-val" style="color:var(--now);">Pilot</div>
-      <p>cobo-Prototyp live bei Kurt K&ouml;nig. Erster zahlender Pilot. Grundfunktionen vorhanden.</p>
+  <span class="lbl">&#x1F5FA; Wo wir stehen</span>
+  <h2>Die Technologie ist validiert. Was noch fehlt: Beweise.</h2>
+  <div class="quote">
+    <p>cobo ist ein funktionierendes Produkt mit einem Pilot-Kunden (Kurt K&ouml;nig). LangGraph l&auml;uft, RAG funktioniert, der erste echte Use Case ist live. <strong>Das ist mehr als die meisten Startups in diesem Stadium haben.</strong><br><br>Was noch fehlt: Zahlen. Beweise. Eine Geschichte, die man weitererzählen kann.</p>
+  </div>
+  <div class="g3" style="margin-top:4px;">
+    <div class="stat" style="background:#F0FDF4;border:1px solid #BBF7D0;">
+      <div style="font-size:1.8em;font-weight:800;color:#16A34A;">1</div>
+      <div style="font-size:.65em;color:#166534;margin-top:4px;">Pilot-Kunde live</div>
     </div>
-    <div class="snap-card" style="border-color:#C4B5FD;">
-      <div class="sc-label" style="color:var(--v);">&#x1F527; In Arbeit</div>
-      <div class="sc-val" style="color:var(--v);">3 Rollen</div>
-      <p>Disponent, Mechaniker, GF/Serviceleitung als Personas definiert. Use Cases dokumentiert.</p>
+    <div class="stat" style="background:var(--fl);border:1px solid #C4B5FD;">
+      <div style="font-size:1.8em;font-weight:800;color:var(--v);">9</div>
+      <div style="font-size:.65em;color:#5B21B6;margin-top:4px;">Features in v1.0</div>
     </div>
-    <div class="snap-card" style="border-color:#FED7AA;">
-      <div class="sc-label" style="color:var(--h1);">&#x26A0; Offen</div>
-      <div class="sc-val" style="color:var(--h1);">4 Decisions</div>
-      <p>Preismodell, Rollenstrategrie, Vertrieb &amp; DSGVO-Framework noch nicht entschieden.</p>
+    <div class="stat" style="background:#FFF7ED;border:1px solid #FED7AA;">
+      <div style="font-size:1.8em;font-weight:800;color:#EA580C;">3</div>
+      <div style="font-size:.65em;color:#9A3412;margin-top:4px;">Personas definiert</div>
     </div>
   </div>
-  <div style="margin-top:16px;">
-    <div style="font-size:.65em; font-weight:600; color:var(--tx); margin-bottom:10px;">Feature-Bereitschaft (MVP)</div>
-    <div class="kpi-row"><div class="kpi-label">Dokumentensuche &amp; Chat</div><div class="kpi-bar"><div class="kpi-fill" style="width:90%;background:#10B981;"></div></div><div class="kpi-val">90%</div></div>
-    <div class="kpi-row"><div class="kpi-label">Servicehistorie-Integration</div><div class="kpi-bar"><div class="kpi-fill" style="width:60%;background:#F59E0B;"></div></div><div class="kpi-val">60%</div></div>
-    <div class="kpi-row"><div class="kpi-label">Rollen &amp; Zugriffskontrolle</div><div class="kpi-bar"><div class="kpi-fill" style="width:40%;background:#EF4444;"></div></div><div class="kpi-val">40%</div></div>
-    <div class="kpi-row"><div class="kpi-label">Google SSO (@vengine.tech)</div><div class="kpi-bar"><div class="kpi-fill" style="width:75%;background:#F59E0B;"></div></div><div class="kpi-val">75%</div></div>
-  </div>
-  <div class="ft"><span>cobo</span> · Execution Roadmap 2026</div>
+  <div class="ft"><span>cobo</span> &middot; Strategie 2026</div>
 </section>
 
-<!-- 3 NAECHSTE WOCHEN -->
+<!-- 3 PHASE 1 OVERVIEW -->
 <section>
-  <span class="lbl">&#x1F7E2; Jetzt — n&auml;chste 4 Wochen</span>
-  <h2 style="font-size:1.15em;">Sofort-Priorit&auml;ten: Was muss jetzt passieren?</h2>
-  <div style="display:flex;flex-direction:column;gap:6px;">
-    <div class="task-row" style="background:#F0FDF4;border:1px solid #D1FAE5;">
-      <div class="dot dot-red"></div>
-      <div style="flex:1;">
-        <div class="task-title">&#x1F50D; KK Pilot-Feedback strukturiert auswerten</div>
-        <div class="task-meta">Welche Features werden genutzt? Was fehlt? NPS-Score einholen. Basis f&uuml;r Kundengespräch Woche 2.</div>
-      </div>
-      <div class="task-owner">Lea</div>
-      <div style="font-size:.6em;color:var(--mu);white-space:nowrap;">KW 10</div>
-    </div>
-    <div class="task-row" style="background:#F0FDF4;border:1px solid #D1FAE5;">
-      <div class="dot dot-red"></div>
-      <div style="flex:1;">
-        <div class="task-title">&#x1F4B0; Preismodell entscheiden</div>
-        <div class="task-meta">Flat-Fee (S/M/L) vs. Per-Seat vs. Request-Based. Vorschlag von Lea vorbereiten → Freigabe Fabian.</div>
-      </div>
-      <div class="task-owner">Lea + Fabian</div>
-      <div style="font-size:.6em;color:var(--mu);white-space:nowrap;">KW 10</div>
-    </div>
-    <div class="task-row">
-      <div class="dot dot-red"></div>
-      <div style="flex:1;">
-        <div class="task-title">&#x1F512; Google SSO f&uuml;r Prototyp finalisieren</div>
-        <div class="task-meta">OAuth-Client in GCP anlegen (5 Minuten in Console), GitHub Secret setzen → Deploy.</div>
-      </div>
-      <div class="task-owner">Fabian</div>
-      <div style="font-size:.6em;color:var(--mu);white-space:nowrap;">KW 10</div>
-    </div>
-    <div class="task-row">
-      <div class="dot dot-yel"></div>
-      <div style="flex:1;">
-        <div class="task-title">&#x1F465; Rollenstrategie festlegen</div>
-        <div class="task-meta">Generisch (flexibel konfigurierbar) vs. KK-spezifisch. Entscheidung wirkt sich auf Onboarding-Flow aus.</div>
-      </div>
-      <div class="task-owner">Lea</div>
-      <div style="font-size:.6em;color:var(--mu);white-space:nowrap;">KW 11</div>
-    </div>
-    <div class="task-row">
-      <div class="dot dot-yel"></div>
-      <div style="flex:1;">
-        <div class="task-title">&#x1F91D; Sales &amp; Marketing Abstimmung (morgen)</div>
-        <div class="task-meta">Positionierung, USPs und Vertriebsstrategie klären. Buyer-Persona: GF/Serviceleitung — nicht Techniker.</div>
-      </div>
-      <div class="task-owner">Lea + Sales</div>
-      <div style="font-size:.6em;color:var(--mu);white-space:nowrap;">04.03.</div>
-    </div>
-    <div class="task-row">
-      <div class="dot dot-grn"></div>
-      <div style="flex:1;">
-        <div class="task-title">&#x1F4CB; DSGVO-Framework Draft</div>
-        <div class="task-meta">DPA-Template erstellen. Datenschutz-Dokumentation für Enterprise-Onboarding (Lea + Legal).</div>
-      </div>
-      <div class="task-owner">Lea</div>
-      <div style="font-size:.6em;color:var(--mu);white-space:nowrap;">KW 12</div>
+  <span class="lbl">&#x1F7E2; Phase 1 &mdash; N&auml;chste 3 Monate</span>
+  <h2>Validierung festigen</h2>
+  <div class="quote" style="margin-bottom:16px;">
+    <p><strong>Ziel:</strong> Einen zahlenden, begeisterten Referenz-Kunden. Ohne gro&szlig;es Investment.</p>
+  </div>
+  <div class="g2">
+    <div class="action"><div class="ic">&#x1F504;</div><div class="body"><div class="title">KK-Pilot zur Perfektion bringen</div><div class="sub">Reliability &gt; neue Features. Fehlerquote &lt; 2%, Antwortzeit &lt; 3 Sek., kein Ausfall ohne sofortigen Fix.</div></div></div>
+    <div class="action"><div class="ic">&#x1F4CA;</div><div class="body"><div class="title">Mixpanel einschalten</div><div class="sub">VD-179 ist im Board. Welche Fragen werden gestellt? Was bleibt unbeantwortet? Welche Maschinen? — Produktentwicklung ohne Entwicklungskosten.</div></div></div>
+    <div class="action"><div class="ic">&#x1F4AC;</div><div class="body"><div class="title">3&ndash;5 KK User-Interviews</div><div class="sub">Strukturiert, mit Aufzeichnung. Ziel: 3 klare &ldquo;Das rettet uns Zeit&rdquo;-Aussagen f&uuml;r die Case Study.</div></div></div>
+    <div class="action"><div class="ic">&#x1F4CB;</div><div class="body"><div class="title">Case Study schreiben</div><div class="sub">&ldquo;Kurt K&ouml;nig + cobo: X Stunden Diagnosezeit pro Monat gespart.&rdquo; — Das wichtigste Vertriebsdokument der n&auml;chsten 12 Monate.</div></div></div>
+    <div class="action"><div class="ic">&#x1F9F9;</div><div class="body"><div class="title">Core-UX abschlie&szlig;en</div><div class="sub">Log-Out, Profil, Chat-Historie, Konfidenz-Badge, Token-Anzeige f&uuml;r Admin. Fertig machen.</div></div></div>
+    <div style="padding:10px 14px;background:#F0FDF4;border-radius:8px;border:1px solid #BBF7D0;">
+      <div style="font-size:.65em;font-weight:700;color:#15803D;">Budget</div>
+      <div style="font-size:.85em;font-weight:800;color:#166534;">&sim;0&euro; extern</div>
+      <div style="font-size:.6em;color:#166534;margin-top:2px;">&sim;5&ndash;8 Entwicklungstage</div>
     </div>
   </div>
-  <div class="ft"><span>cobo</span> · Execution Roadmap 2026</div>
+  <div class="ft"><span>cobo</span> &middot; Strategie 2026</div>
 </section>
 
-<!-- 4 3 MONATE -->
+<!-- 4 PHASE 1 DETAILS - KK Pilot -->
 <section>
-  <span class="lbl">&#x1F7E3; 3-Monats-Plan — April bis Mai 2026</span>
-  <h2>Produktreife &amp; zweiter Pilotkunde</h2>
+  <span class="lbl">&#x1F7E2; Phase 1 &mdash; Details</span>
+  <h2>Der KK-Pilot ist unser wichtigstes Asset</h2>
   <div class="g2" style="align-items:start;">
     <div>
-      <div style="font-size:.65em;font-weight:700;color:var(--v);margin-bottom:8px;text-transform:uppercase;letter-spacing:.08em;">Produkt</div>
-      <div class="task-row"><div class="dot dot-yel"></div><div><div class="task-title">Self-Service Onboarding bauen</div><div class="task-meta">Kein manueller Setup mehr. Neue Kunden k&ouml;nnen sich eigenst&auml;ndig einrichten.</div></div></div>
-      <div class="task-row"><div class="dot dot-yel"></div><div><div class="task-title">Feedback-Loop implementieren</div><div class="task-meta">User kann Antworten bewerten → Qualit&auml;tsverbesserung &uuml;ber Zeit.</div></div></div>
-      <div class="task-row"><div class="dot dot-grn"></div><div><div class="task-title">Analyse-Dashboard (Serviceleitung)</div><div class="task-meta">Top-Fragen, Nutzungsfrequenz, Eskalationsquote — f&uuml;r GF-Reporting.</div></div></div>
-      <div class="task-row"><div class="dot dot-grn"></div><div><div class="task-title">Mobile-Optimierung</div><div class="task-meta">Werkstatt-Nutzung ist mobil. Responsive UI f&uuml;r Tablet + Smartphone.</div></div></div>
+      <div style="font-size:.65em;font-weight:700;color:#15803D;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;">Was wir jetzt aus KK rausziehen</div>
+      <div class="action"><div class="ic">&#x23F1;</div><div class="body"><div class="title">Reliability-Baseline setzen</div><div class="sub">Ziel: &lt; 2% Fehlerquote, &lt; 3 Sek. Antwortzeit. Erst wenn das stabil ist — neue Features.</div></div></div>
+      <div class="action"><div class="ic">&#x1F4CA;</div><div class="body"><div class="title">Nutzungsdaten mit Mixpanel</div><div class="sub">Welche Fragen werden t&auml;glich gestellt? Welche Maschinen dominieren? Was l&auml;uft unbeantwortet weg?</div></div></div>
+      <div class="action"><div class="ic">&#x1F3A4;</div><div class="body"><div class="title">3&ndash;5 User-Interviews</div><div class="sub">Disponent, Mechaniker, Serviceleitung jeweils einzeln. Mit Aufzeichnung. Strukturierter Leitfaden.</div></div></div>
     </div>
     <div>
-      <div style="font-size:.65em;font-weight:700;color:var(--h1);margin-bottom:8px;text-transform:uppercase;letter-spacing:.08em;">Go-to-Market</div>
-      <div class="task-row"><div class="dot dot-red"></div><div><div class="task-title">Zweiten Pilotkunden onboarden</div><div class="task-meta">Ziel: Mai 2026. Pipeline aufbauen aus S&amp;M-Termin morgen.</div></div></div>
-      <div class="task-row"><div class="dot dot-red"></div><div><div class="task-title">Preismodell live schalten</div><div class="task-meta">Auf Basis der Entscheidung aus KW 10. Erste echte Rechnung.</div></div></div>
-      <div class="task-row"><div class="dot dot-yel"></div><div><div class="task-title">Sales-Deck fertigstellen</div><div class="task-meta">Pitch-Deck f&uuml;r GF/Serviceleitung (Buyer-Persona). ROI-Rechnung erg&auml;nzen.</div></div></div>
-      <div class="task-row"><div class="dot dot-grn"></div><div><div class="task-title">Case Study KK vorbereiten</div><div class="task-meta">Ergebnisse aus Pilotphase dokumentieren f&uuml;r Referenzmarketing.</div></div></div>
-    </div>
-  </div>
-  <div style="margin-top:12px;padding:10px 16px;background:#FFF7ED;border-radius:8px;font-size:.63em;color:#92400E;border:1px solid #FED7AA;">
-    &#x26A0; <strong>Abh&auml;ngigkeiten:</strong> Self-Service Onboarding blockt zweiten Pilotkunden. Preismodell-Entscheidung (KW 10) ist kritischer Pfad.
-  </div>
-  <div class="ft"><span>cobo</span> · Execution Roadmap 2026</div>
-</section>
-
-<!-- 5 JAHRESPLAN -->
-<section>
-  <span class="lbl">&#x1F4C5; Jahresplan 2026</span>
-  <h2>Vier Phasen — von Beta zu Marktreife</h2>
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;">
-    <div class="hz hz-now">
-      <div class="hl">&#x1F7E2; Q1 · jetzt</div>
-      <h3 style="font-size:.82em;">MVP &amp; Pilot</h3>
-      <ul>
-        <li>KK Pilot l&auml;uft</li>
-        <li>Personas definiert</li>
-        <li>Features v1.0 ready</li>
-        <li>Preismodell Entscheidung</li>
-        <li>SSO finalisieren</li>
-      </ul>
-    </div>
-    <div class="hz hz-q2">
-      <div class="hl">&#x1F7E3; Q2 · Apr–Jun</div>
-      <h3 style="font-size:.82em;">Produktreife</h3>
-      <ul>
-        <li>Self-Service Onboarding</li>
-        <li>2. Pilotkunde onboard</li>
-        <li>Feedback-Loop live</li>
-        <li>Analyse-Dashboard</li>
-        <li>DSGVO-Framework</li>
-      </ul>
-    </div>
-    <div class="hz hz-h1">
-      <div class="hl">&#x1F7E0; Q3 · Jul–Sep</div>
-      <h3 style="font-size:.82em;">Skalierung</h3>
-      <ul>
-        <li>Multi-Tenant live</li>
-        <li>API-Integration (ERP)</li>
-        <li>3.–5. Kunde onboard</li>
-        <li>Partner-Kanal aufbauen</li>
-        <li>White-Label Pilot</li>
-      </ul>
-    </div>
-    <div class="hz hz-h2">
-      <div class="hl">&#x1F535; Q4 · Okt–Dez</div>
-      <h3 style="font-size:.82em;">Wachstum</h3>
-      <ul>
-        <li>Voice-Interface Beta</li>
-        <li>Proaktive Wartungshinweise</li>
-        <li>5+ zahlende Kunden</li>
-        <li>ARR-Ziel erreicht</li>
-        <li>Jahresevaluierung</li>
-      </ul>
-    </div>
-  </div>
-  <div style="margin-top:14px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
-    <div style="text-align:center;padding:10px;background:#F0FDF4;border-radius:8px;font-size:.62em;"><strong style="color:var(--now);display:block;font-size:1.3em;">1</strong>Kunden Q1</div>
-    <div style="text-align:center;padding:10px;background:var(--fl);border-radius:8px;font-size:.62em;"><strong style="color:var(--v);display:block;font-size:1.3em;">2</strong>Kunden Q2</div>
-    <div style="text-align:center;padding:10px;background:#FFF7ED;border-radius:8px;font-size:.62em;"><strong style="color:var(--h1);display:block;font-size:1.3em;">5</strong>Kunden Q3</div>
-    <div style="text-align:center;padding:10px;background:#EFF6FF;border-radius:8px;font-size:.62em;"><strong style="color:var(--h2);display:block;font-size:1.3em;">5+</strong>Kunden Q4</div>
-  </div>
-  <div class="ft"><span>cobo</span> · Execution Roadmap 2026</div>
-</section>
-
-<!-- 6 DECISIONS -->
-<section>
-  <span class="lbl">Entscheidungs-Matrix</span>
-  <h2 style="font-size:1.2em;">Was wir entscheiden m&uuml;ssen — und bis wann</h2>
-  <div class="dec-hd g2" style="grid-template-columns:2fr 1fr 1fr 2fr;padding:4px 10px;margin-bottom:4px;">
-    <div>Entscheidung</div><div>Owner</div><div>Deadline</div><div>Impakt</div>
-  </div>
-  <div class="dec-row" style="grid-template-columns:2fr 1fr 1fr 2fr;border:1px solid #FEE2E2;border-radius:8px;background:#FEF2F2;">
-    <div><strong>Preismodell</strong> (Flat / Per Seat / Hybrid)</div>
-    <div><span class="pill pill-block">Lea + Fabian</span></div>
-    <div style="font-size:.65em;font-weight:600;color:#DC2626;">KW 10 &#x26A0;</div>
-    <div style="font-size:.63em;color:#7F1D1D;">Blockt Kundengespräche und zweiten Piloten</div>
-  </div>
-  <div class="dec-row" style="grid-template-columns:2fr 1fr 1fr 2fr;margin-top:6px;border:1px solid #FEE2E2;border-radius:8px;background:#FEF2F2;">
-    <div><strong>Rollenkonzept</strong> (generisch vs. KK-spezifisch)</div>
-    <div><span class="pill pill-open">Lea</span></div>
-    <div style="font-size:.65em;font-weight:600;color:#EA580C;">KW 11</div>
-    <div style="font-size:.63em;color:#92400E;">Beeinflusst Onboarding-UX &amp; Tech-Architektur</div>
-  </div>
-  <div class="dec-row" style="grid-template-columns:2fr 1fr 1fr 2fr;margin-top:6px;border:1px solid #FEF3C7;border-radius:8px;background:#FFFBEB;">
-    <div><strong>Vertriebsmodell</strong> (Direct vs. Partner)</div>
-    <div><span class="pill pill-open">Lea + Sales</span></div>
-    <div style="font-size:.65em;font-weight:600;color:#EA580C;">04.03. &#128073;</div>
-    <div style="font-size:.63em;color:#92400E;">Morgen im S&amp;M-Termin klären → Go-to-Market-Strategie</div>
-  </div>
-  <div class="dec-row" style="grid-template-columns:2fr 1fr 1fr 2fr;margin-top:6px;border:1px solid #FEF3C7;border-radius:8px;background:#FFFBEB;">
-    <div><strong>DSGVO-Framework</strong> (Data Residency, DPA)</div>
-    <div><span class="pill pill-open">Lea</span></div>
-    <div style="font-size:.65em;font-weight:600;color:#D97706;">KW 12</div>
-    <div style="font-size:.63em;color:#92400E;">Ben&ouml;tigt f&uuml;r Enterprise-Onboarding</div>
-  </div>
-  <div class="dec-row" style="grid-template-columns:2fr 1fr 1fr 2fr;margin-top:6px;">
-    <div><strong>Tech-Stack</strong> (RAG selbst vs. extern)</div>
-    <div><span class="pill pill-wip">Fabian + Leon</span></div>
-    <div style="font-size:.65em;color:var(--mu);">Apr 2026</div>
-    <div style="font-size:.63em;color:var(--mu);">Kontrolle vs. Speed-to-Market — kein akuter Druck</div>
-  </div>
-  <div class="ft"><span>cobo</span> · Execution Roadmap 2026</div>
-</section>
-
-<!-- 7 BLOCKER -->
-<section>
-  <span class="lbl">Blockaden &amp; Risiken</span>
-  <h2>Was uns bremst — und wie wir es l&ouml;sen</h2>
-  <div class="blocker">
-    <div class="bi">&#x1F512;</div>
-    <div>
-      <h4>Google SSO nicht fertig → Pilot schwer shareBar</h4>
-      <p><strong>L&ouml;sung:</strong> Fabian legt OAuth-Client in GCP Console an (5 Min) → Jarvis setzt Secret und deployt. Passwort-Login ist aktueller Workaround.</p>
-    </div>
-  </div>
-  <div class="blocker">
-    <div class="bi">&#x1F4B0;</div>
-    <div>
-      <h4>Kein Preismodell = keine echten Kundengespräche</h4>
-      <p><strong>L&ouml;sung:</strong> Lea bereitet Vorschlag (Flat-Fee S/M/L) bis KW 10 vor. Entscheidung mit Fabian diese Woche.</p>
-    </div>
-  </div>
-  <div class="blocker">
-    <div class="bi">&#x1F91D;</div>
-    <div>
-      <h4>Vertriebskanal unklar → Pipeline stockt</h4>
-      <p><strong>L&ouml;sung:</strong> S&amp;M-Termin morgen (04.03.) l&auml;ren: Direct Sales erste Phase, H&auml;ndlernetz als Option ab Q3.</p>
-    </div>
-  </div>
-  <div class="blocker" style="background:#FFFBEB;border-color:#FDE68A;">
-    <div class="bi">&#x1F9E0;</div>
-    <div>
-      <h4 style="color:#92400E;">Prototyp ≠ Produkt — fehlende Backend-Tiefe</h4>
-      <p style="color:#78350F;"><strong>L&ouml;sung:</strong> KK Pilot-Feedback bestimmt Priorisierung der echten Feature-Entwicklung (ab Q2).</p>
-    </div>
-  </div>
-  <div class="ft"><span>cobo</span> · Execution Roadmap 2026</div>
-</section>
-
-<!-- 8 NEXT STEPS konkret -->
-<section>
-  <span class="lbl">Diese Woche konkret</span>
-  <h2>Action Items — KW 10 (03.–07. M&auml;rz 2026)</h2>
-  <div style="display:flex;flex-direction:column;gap:7px;">
-    <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#FEF2F2;border-radius:8px;border-left:3px solid #EF4444;">
-      <span style="font-size:.65em;font-weight:700;color:#DC2626;min-width:60px;">Heute</span>
-      <span style="font-size:.7em;flex:1;">Sales &amp; Marketing Termin vorbereiten — Positionierung, Buyer-Personas, USPs</span>
-      <span class="task-owner">Lea</span>
-    </div>
-    <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#FEF2F2;border-radius:8px;border-left:3px solid #EF4444;">
-      <span style="font-size:.65em;font-weight:700;color:#DC2626;min-width:60px;">04.03.</span>
-      <span style="font-size:.7em;flex:1;">S&amp;M-Termin: Vertriebsmodell &amp; erste Leads identifizieren</span>
-      <span class="task-owner">Lea + Sales</span>
-    </div>
-    <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#FFF7ED;border-radius:8px;border-left:3px solid #F59E0B;">
-      <span style="font-size:.65em;font-weight:700;color:#D97706;min-width:60px;">KW 10</span>
-      <span style="font-size:.7em;flex:1;">GCP OAuth-Client anlegen &rarr; Google SSO live schalten</span>
-      <span class="task-owner">Fabian</span>
-    </div>
-    <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#FFF7ED;border-radius:8px;border-left:3px solid #F59E0B;">
-      <span style="font-size:.65em;font-weight:700;color:#D97706;min-width:60px;">KW 10</span>
-      <span style="font-size:.7em;flex:1;">Preismodell-Vorschlag ausarbeiten &amp; entscheiden (Lea → Freigabe Fabian)</span>
-      <span class="task-owner">Lea + Fabian</span>
-    </div>
-    <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#F0FDF4;border-radius:8px;border-left:3px solid #10B981;">
-      <span style="font-size:.65em;font-weight:700;color:var(--now);min-width:60px;">KW 10</span>
-      <span style="font-size:.7em;flex:1;">KK Pilot-Feedback strukturiert einholen (Interview oder Survey)</span>
-      <span class="task-owner">Lea</span>
-    </div>
-    <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#F0FDF4;border-radius:8px;border-left:3px solid #10B981;">
-      <span style="font-size:.65em;font-weight:700;color:var(--now);min-width:60px;">KW 11</span>
-      <span style="font-size:.7em;flex:1;">Rollenstrategie festlegen &amp; in Backlog überf&uuml;hren</span>
-      <span class="task-owner">Lea</span>
-    </div>
-    <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#EFF6FF;border-radius:8px;border-left:3px solid #3B82F6;">
-      <span style="font-size:.65em;font-weight:700;color:var(--h2);min-width:60px;">KW 12</span>
-      <span style="font-size:.7em;flex:1;">DSGVO-Framework Draft erstellen (DPA-Template, Data Residency)</span>
-      <span class="task-owner">Lea</span>
-    </div>
-  </div>
-  <div class="ft"><span>cobo</span> · Execution Roadmap 2026</div>
-</section>
-
-<!-- 9 AUSBLICK -->
-<section>
-  <span class="lbl">Langfristiger Ausblick</span>
-  <h2>Jenseits von 2026 — selektiv &amp; fokussiert</h2>
-  <div class="g2" style="align-items:start;">
-    <div>
-      <div class="hz hz-now" style="margin-bottom:14px;">
-        <div class="hl">Baumaschinen DACH — unser Fundament</div>
-        <p style="font-size:.68em;color:#374151;margin:0;">Marktf&uuml;hrerschaft im Kernsegment. Bis Mitte 2027 sind wir der Referenzanbieter f&uuml;r KI-gest&uuml;tzten Baumaschinen-Service in der DACH-Region.</p>
+      <div style="font-size:.65em;font-weight:700;color:var(--v);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;">Was am Ende rauskommt</div>
+      <div style="background:var(--fl);border-radius:12px;padding:16px 18px;margin-bottom:12px;">
+        <div style="font-size:.7em;font-weight:700;color:var(--v);margin-bottom:8px;">&#x1F4CB; Case Study Template</div>
+        <div style="font-size:.63em;color:#374151;line-height:1.6;">
+          &ldquo;<strong>Kurt K&ouml;nig + cobo:</strong><br>
+          &mdash; X Stunden Diagnosezeit/Monat gespart<br>
+          &mdash; Y% weniger R&uuml;ckfragen ans B&uuml;ro<br>
+          &mdash; Z Minuten bis zur ersten Antwort<br>
+          &rdquo;<br><br>
+          <em>Das wird das wichtigste Vertriebsdokument der n&auml;chsten 12 Monate.</em>
+        </div>
       </div>
-      <div class="hz" style="background:#F5F3FF;border:1px dashed #C4B5FD;opacity:.8;">
-        <div class="hl" style="color:#9CA3AF;">Langfristiges Potenzial (kein aktives Ziel)</div>
-        <ul>
-          <li style="color:#9CA3AF;">Landmaschinen — gleiche Logik, gleiche Zielgruppe</li>
-          <li style="color:#9CA3AF;">Europ&auml;ische M&auml;rkte (EN) — wenn DACH stabil</li>
-        </ul>
-      </div>
-    </div>
-    <div>
-      <div style="font-size:.65em;font-weight:700;color:var(--tx);margin-bottom:12px;">Leitprinzipien f&uuml;r alle Entscheidungen:</div>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div style="padding:12px 16px;background:#F9FAFB;border-radius:10px;border-left:3px solid var(--v);">
-          <div style="font-size:.75em;font-weight:600;">&#x1F3AF; Erst Tiefe, dann Breite</div>
-          <div style="font-size:.63em;color:var(--mu);margin-top:3px;">Kein Branchen-Hopping. Wir werden richtig gut in einem Segment bevor wir expandieren.</div>
-        </div>
-        <div style="padding:12px 16px;background:#F9FAFB;border-radius:10px;border-left:3px solid var(--v);">
-          <div style="font-size:.75em;font-weight:600;">&#x1F4C9; Daten-getriebene Roadmap</div>
-          <div style="font-size:.63em;color:var(--mu);margin-top:3px;">Jede Feature-Entscheidung basiert auf echtem Nutzerfeedback — nicht auf Annahmen.</div>
-        </div>
-        <div style="padding:12px 16px;background:#F9FAFB;border-radius:10px;border-left:3px solid var(--v);">
-          <div style="font-size:.75em;font-weight:600;">&#x1F91D; Kunden als Produktpartner</div>
-          <div style="font-size:.63em;color:var(--mu);margin-top:3px;">KK ist Referenz, nicht nur Kunde. Co-Entwicklung von Features sch&auml;rft das Produkt.</div>
-        </div>
+      <div style="background:#F0FDF4;border-radius:10px;padding:12px 16px;font-size:.63em;color:#166534;border:1px solid #BBF7D0;">
+        &#x1F3AF; <strong>KK ist Referenz, nicht nur Kunde.</strong> Jede Verbesserung dort ist ein Verkaufsargument f&uuml;r den n&auml;chsten Kunden.
       </div>
     </div>
   </div>
-  <div class="ft"><span>cobo</span> · Execution Roadmap 2026</div>
+  <div class="ft"><span>cobo</span> &middot; Strategie 2026</div>
 </section>
 
-<!-- 10 CLOSING -->
+<!-- 5 PHASE 2 -->
+<section>
+  <span class="lbl">&#x1F7E3; Phase 2 &mdash; 3 bis 12 Monate</span>
+  <h2>Erste echte Kunden</h2>
+  <div class="quote" style="margin-bottom:14px;">
+    <p><strong>Ziel:</strong> 3&ndash;5 zahlende Kunden. Self-Service. Skalierbare Infrastruktur.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+    <div>
+      <div style="font-size:.62em;font-weight:700;color:var(--v);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Produkt</div>
+      <div class="action"><div class="ic">&#x1F680;</div><div class="body"><div class="title">Self-Service Onboarding</div><div class="sub">Neuer Kunde in &lt; 10 Min live, ohne vengine-Eingriff.</div></div></div>
+      <div class="action"><div class="ic">&#x1F4B3;</div><div class="body"><div class="title">Stripe Billing</div><div class="sub">Automatische Rechnungen, SEPA, Upgrade/Downgrade selbst. Keine manuelle Abrechnung.</div></div></div>
+      <div class="action"><div class="ic">&#x1F3E2;</div><div class="body"><div class="title">Multi-Tenancy</div><div class="sub">Keycloak Realm pro Mandant, DSGVO-konform, produktionsreif.</div></div></div>
+      <div class="action"><div class="ic">&#x1F310;</div><div class="body"><div class="title">Multi-Language</div><div class="sub">DE, EN, PL echt — nicht nur UI-Labels.</div></div></div>
+      <div class="action"><div class="ic">&#x1F4F1;</div><div class="body"><div class="title">Mobile PWA</div><div class="sub">F&uuml;r Techniker auf der Baustelle ohne stabiles Netz.</div></div></div>
+    </div>
+    <div>
+      <div style="font-size:.62em;font-weight:700;color:#EA580C;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Go-to-Market</div>
+      <div class="action"><div class="ic">&#x1F91D;</div><div class="body"><div class="title">Aktiver Vertrieb</div><div class="sub">Warm Intros &uuml;ber Netzwerk. 1 LinkedIn-Case-Study pro Monat.</div></div></div>
+      <div class="action"><div class="ic">&#x1F3D7;</div><div class="body"><div class="title">bauma 2026</div><div class="sub">Die gr&ouml;&szlig;te Baumaschinenmesse der Welt. Als Live-Demo.</div></div></div>
+      <div style="margin-top:12px;padding:14px 16px;background:#FFF7ED;border-radius:10px;border:1px solid #FED7AA;">
+        <div style="font-size:.65em;font-weight:700;color:#C2410C;margin-bottom:6px;">Budget</div>
+        <div style="font-size:.7em;color:#374151;">Stripe-Fees (~1% Umsatz)</div>
+        <div style="font-size:.63em;color:var(--mu);margin-top:4px;">+ optional 1 Salesperson ab Monat 6, wenn Pipeline es rechtfertigt</div>
+      </div>
+    </div>
+  </div>
+  <div class="ft"><span>cobo</span> &middot; Strategie 2026</div>
+</section>
+
+<!-- 6 PHASE 3 -->
+<section>
+  <span class="lbl">&#x1F535; Phase 3 &mdash; ab 2027</span>
+  <h2>Plattform &amp; Skalierung</h2>
+  <div class="quote" style="margin-bottom:16px;">
+    <p><strong>Ziel:</strong> 50+ Kunden. API-Produkt. OEM-Partnerschaften.<br><em>Das ist kein aktives 2026-Ziel &mdash; aber die Richtung, in die wir alles heute bauen.</em></p>
+  </div>
+  <div class="g2">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div class="action"><div class="ic">&#x1F50C;</div><div class="body"><div class="title">API-First / Embedded Widget</div><div class="sub">cobo als Modul in fremde Portale einbetten. Nicht mehr nur eigene App.</div></div></div>
+      <div class="action"><div class="ic">&#x1F3ED;</div><div class="body"><div class="title">OEM-Dokumenten-Marketplace</div><div class="sub">Liebherr, Komatsu als Content-Partner. Hersteller liefern Docs direkt in cobo.</div></div></div>
+      <div class="action"><div class="ic">&#x1F916;</div><div class="body"><div class="title">Predictive Maintenance</div><div class="sub">cobo warnt, bevor der Techniker fragt. Aus reaktiv wird proaktiv.</div></div></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div class="action"><div class="ic">&#x1F4B0;</div><div class="body"><div class="title">Transaktions-Revenue</div><div class="sub">Ersatzteil-Bestellung direkt aus dem Chat. Neues Gesch&auml;ftsmodell parallel zur SaaS-Fee.</div></div></div>
+      <div class="action"><div class="ic">&#x1F91D;</div><div class="body"><div class="title">OEM als Distributionskanal</div><div class="sub">Der echte Skalierungs-Hebel. Nicht 50 Einzelkunden — 5 OEMs mit je 100 H&auml;ndlern.</div></div></div>
+      <div style="padding:14px 16px;background:#EFF6FF;border-radius:10px;border:1px solid #BFDBFE;">
+        <div style="font-size:.65em;color:#1E40AF;font-style:italic;line-height:1.5;">&#x1F4A1; <strong>Heute schon richtig bauen:</strong> Jede Architektur-Entscheidung jetzt sollte Phase 3 nicht versperren.</div>
+      </div>
+    </div>
+  </div>
+  <div class="ft"><span>cobo</span> &middot; Strategie 2026</div>
+</section>
+
+<!-- 7 ROADMAP OVERVIEW -->
+<section>
+  <span class="lbl">Gesamts&uuml;berblick</span>
+  <h2>Von Pilot zu Plattform &mdash; drei klare Phasen</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;height:380px;">
+    <div class="phase-block ph1" style="display:flex;flex-direction:column;">
+      <div><div class="ph-tag">&#x1F7E2; 0&ndash;3 Monate</div></div>
+      <h3>Validierung festigen</h3>
+      <div class="tagline">1 begeisterter Referenz-Kunde</div>
+      <ul style="flex:1;">
+        <li>KK-Pilot: Reliability &lt; 2% Fehler</li>
+        <li>Mixpanel live (VD-179)</li>
+        <li>3&ndash;5 User-Interviews</li>
+        <li>Case Study fertig</li>
+        <li>Core-UX abgeschlossen</li>
+      </ul>
+      <div style="font-size:.62em;background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;margin-top:auto;">
+        <strong>Budget:</strong> &sim;0&euro; extern &middot; 5&ndash;8 Entwicklungstage
+      </div>
+    </div>
+    <div class="phase-block ph2" style="display:flex;flex-direction:column;">
+      <div><div class="ph-tag">&#x1F7E3; 3&ndash;12 Monate</div></div>
+      <h3>Erste echte Kunden</h3>
+      <div class="tagline">3&ndash;5 zahlende Kunden</div>
+      <ul style="flex:1;">
+        <li>Self-Service Onboarding (&lt;10 Min)</li>
+        <li>Stripe Billing live</li>
+        <li>Multi-Tenancy (Keycloak)</li>
+        <li>Mobile PWA</li>
+        <li>bauma 2026</li>
+      </ul>
+      <div style="font-size:.62em;background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;margin-top:auto;">
+        <strong>Budget:</strong> Stripe-Fees + optional Salesperson ab M6
+      </div>
+    </div>
+    <div class="phase-block ph3" style="display:flex;flex-direction:column;">
+      <div><div class="ph-tag">&#x1F535; ab 2027</div></div>
+      <h3>Plattform &amp; Skalierung</h3>
+      <div class="tagline">50+ Kunden &middot; OEM-Partnerschaften</div>
+      <ul style="flex:1;">
+        <li>API-First / Embedded Widget</li>
+        <li>OEM-Dokumenten-Marketplace</li>
+        <li>Predictive Maintenance</li>
+        <li>Transaktions-Revenue</li>
+        <li>OEM als Distributionskanal</li>
+      </ul>
+      <div style="font-size:.62em;background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;margin-top:auto;">
+        <strong>Heute bauen:</strong> Architektur-Entscheidungen schon mit Phase 3 im Kopf
+      </div>
+    </div>
+  </div>
+  <div class="ft"><span>cobo</span> &middot; Strategie 2026</div>
+</section>
+
+<!-- 8 NAECHSTE SCHRITTE -->
+<section>
+  <span class="lbl">Jetzt konkret</span>
+  <h2>Was als n&auml;chstes passiert &mdash; diese Woche</h2>
+  <div style="display:flex;flex-direction:column;gap:8px;">
+    <div style="display:flex;gap:12px;align-items:center;padding:12px 16px;background:#FEF2F2;border-radius:10px;border-left:4px solid #EF4444;">
+      <span style="font-size:1.1em;">&#x1F91D;</span>
+      <div style="flex:1;">
+        <div style="font-size:.75em;font-weight:600;">Sales &amp; Marketing Termin — 04.03.</div>
+        <div style="font-size:.63em;color:var(--mu);">Vertriebsmodell kl&auml;ren, erste Leads identifizieren, Buyer-Persona validieren</div>
+      </div>
+      <span style="font-size:.62em;font-weight:700;color:#DC2626;white-space:nowrap;">&#x26A0; morgen</span>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center;padding:12px 16px;background:#FEF2F2;border-radius:10px;border-left:4px solid #EF4444;">
+      <span style="font-size:1.1em;">&#x1F4CA;</span>
+      <div style="flex:1;">
+        <div style="font-size:.75em;font-weight:600;">Mixpanel aktivieren (VD-179)</div>
+        <div style="font-size:.63em;color:var(--mu);">Nutzungsdaten aus KK-Pilot. Basis f&uuml;r alle weiteren Produkt-Entscheidungen.</div>
+      </div>
+      <span style="font-size:.62em;font-weight:700;color:#DC2626;white-space:nowrap;">KW 10</span>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center;padding:12px 16px;background:#FFF7ED;border-radius:10px;border-left:4px solid #F59E0B;">
+      <span style="font-size:1.1em;">&#x1F3A4;</span>
+      <div style="flex:1;">
+        <div style="font-size:.75em;font-weight:600;">Interview-Leitfaden f&uuml;r KK-User erstellen</div>
+        <div style="font-size:.63em;color:var(--mu);">3 Personas, 3&ndash;5 Pers. pro Persona. Ziel: Quotes f&uuml;r Case Study.</div>
+      </div>
+      <span style="font-size:.62em;font-weight:700;color:#D97706;white-space:nowrap;">KW 10&ndash;11</span>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center;padding:12px 16px;background:#FFF7ED;border-radius:10px;border-left:4px solid #F59E0B;">
+      <span style="font-size:1.1em;">&#x1F9F9;</span>
+      <div style="flex:1;">
+        <div style="font-size:.75em;font-weight:600;">Core-UX Backlog priorisieren</div>
+        <div style="font-size:.63em;color:var(--mu);">Log-Out, Chat-Historie, Konfidenz-Badge, Token-Anzeige. In den n&auml;chsten Sprint.</div>
+      </div>
+      <span style="font-size:.62em;font-weight:700;color:#D97706;white-space:nowrap;">KW 11</span>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center;padding:12px 16px;background:#F0FDF4;border-radius:10px;border-left:4px solid #10B981;">
+      <span style="font-size:1.1em;">&#x1F4CB;</span>
+      <div style="flex:1;">
+        <div style="font-size:.75em;font-weight:600;">Case Study Struktur aufsetzen</div>
+        <div style="font-size:.63em;color:var(--mu);">Template erstellen, Datenpunkte die wir noch brauchen identifizieren.</div>
+      </div>
+      <span style="font-size:.62em;font-weight:700;color:#15803D;white-space:nowrap;">KW 11&ndash;12</span>
+    </div>
+  </div>
+  <div class="ft"><span>cobo</span> &middot; Strategie 2026</div>
+</section>
+
+<!-- 9 CLOSING -->
 <section data-background-gradient="linear-gradient(135deg,#6D28D9 0%,#8B5CF6 100%)">
   <div style="text-align:center;color:white;padding:30px 0;">
-    <div style="font-size:2.5em;margin-bottom:16px;">&#x1F916;</div>
-    <h2 style="color:white;font-size:1.8em;font-weight:800;margin-bottom:20px;">N&auml;chste 72 Stunden</h2>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;max-width:700px;margin:0 auto;">
-      <div style="background:rgba(255,255,255,.12);border-radius:12px;padding:16px;backdrop-filter:blur(10px);">
-        <div style="font-size:.7em;font-weight:700;margin-bottom:6px;">&#x1F3AF; Heute</div>
-        <div style="font-size:.65em;opacity:.85;">S&amp;M-Termin vorbereiten</div>
+    <div style="font-size:2.8em;margin-bottom:16px;">&#x1F916;</div>
+    <h2 style="color:white;font-size:2em;font-weight:800;margin-bottom:8px;">Jetzt: Perfektion bei KK.</h2>
+    <h2 style="color:rgba(255,255,255,.75);font-size:1.5em;font-weight:600;margin-bottom:8px;">Dann: Die Geschichte verbreiten.</h2>
+    <h2 style="color:rgba(255,255,255,.5);font-size:1.2em;font-weight:400;">Danach: Skalieren.</h2>
+    <div style="margin-top:36px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;max-width:600px;margin:36px auto 0;">
+      <div style="background:rgba(255,255,255,.1);border-radius:10px;padding:14px;font-size:.65em;">
+        <div style="font-weight:700;margin-bottom:4px;">Phase 1</div>
+        <div style="opacity:.75;">1 Referenz-Kunde</div>
       </div>
-      <div style="background:rgba(255,255,255,.12);border-radius:12px;padding:16px;backdrop-filter:blur(10px);">
-        <div style="font-size:.7em;font-weight:700;margin-bottom:6px;">&#x1F91D; Morgen (04.03.)</div>
-        <div style="font-size:.65em;opacity:.85;">S&amp;M-Termin: Vertrieb &amp; Leads</div>
+      <div style="background:rgba(255,255,255,.1);border-radius:10px;padding:14px;font-size:.65em;">
+        <div style="font-weight:700;margin-bottom:4px;">Phase 2</div>
+        <div style="opacity:.75;">3&ndash;5 Kunden</div>
       </div>
-      <div style="background:rgba(255,255,255,.12);border-radius:12px;padding:16px;backdrop-filter:blur(10px);">
-        <div style="font-size:.7em;font-weight:700;margin-bottom:6px;">&#x1F4B0; KW 10</div>
-        <div style="font-size:.65em;opacity:.85;">Preismodell entscheiden</div>
+      <div style="background:rgba(255,255,255,.1);border-radius:10px;padding:14px;font-size:.65em;">
+        <div style="font-weight:700;margin-bottom:4px;">Phase 3</div>
+        <div style="opacity:.75;">50+ Kunden</div>
       </div>
     </div>
-    <p style="color:rgba(255,255,255,.5);font-size:.7em;margin-top:30px;">vengine GmbH &middot; M&auml;rz 2026 &middot; Vertraulich</p>
+    <p style="color:rgba(255,255,255,.35);font-size:.62em;margin-top:28px;">vengine GmbH &middot; M&auml;rz 2026 &middot; Vertraulich</p>
   </div>
 </section>
 
