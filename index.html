@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cobo – Vision & Roadmap 2026</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --vengine: #7C3AED;
+      --vengine-dark: #6D28D9;
+      --vengine-light: #EDE9FE;
+      --text: #0F0F1A;
+      --muted: #6B7280;
+    }
+    .reveal { font-family: 'Inter', sans-serif; }
+    .reveal h1, .reveal h2, .reveal h3 { font-family: 'Inter', sans-serif; letter-spacing: -0.03em; }
+    .reveal .slides section { text-align: left; }
+
+    /* Title slide */
+    .slide-title { background: linear-gradient(135deg, #6D28D9 0%, #8B5CF6 100%); color: white !important; }
+    .slide-title h1 { color: white !important; font-size: 3em; font-weight: 800; }
+    .slide-title p { color: rgba(255,255,255,0.8) !important; font-size: 1.1em; }
+    .slide-title .tag { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 4px 16px; font-size: 0.7em; margin-bottom: 20px; }
+
+    /* Section header */
+    .slide-section { background: var(--vengine); color: white !important; }
+    .slide-section h2 { color: white !important; font-size: 2.5em; font-weight: 700; }
+    .slide-section .num { font-size: 5em; font-weight: 800; opacity: 0.15; position: absolute; top: -20px; left: 40px; }
+
+    /* Cards */
+    .cards { display: grid; gap: 16px; }
+    .cards-2 { grid-template-columns: 1fr 1fr; }
+    .cards-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .card { background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 12px; padding: 24px; }
+    .card.purple { background: var(--vengine-light); border-color: #C4B5FD; }
+    .card .icon { font-size: 1.8em; margin-bottom: 10px; }
+    .card h4 { font-size: 0.85em; font-weight: 600; color: var(--text); margin: 0 0 8px; }
+    .card p { font-size: 0.7em; color: var(--muted); margin: 0; line-height: 1.5; }
+
+    /* Roadmap */
+    .roadmap { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+    .phase { border-radius: 12px; padding: 24px; }
+    .phase-now { background: #F0FDF4; border: 2px solid #86EFAC; }
+    .phase-q2 { background: var(--vengine-light); border: 2px solid #C4B5FD; }
+    .phase-h2 { background: #FFF7ED; border: 2px solid #FED7AA; }
+    .phase .label { font-size: 0.6em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+    .phase-now .label { color: #16A34A; }
+    .phase-q2 .label { color: var(--vengine); }
+    .phase-h2 .label { color: #EA580C; }
+    .phase h3 { font-size: 0.9em; font-weight: 700; color: var(--text); margin: 0 0 12px; }
+    .phase ul { margin: 0; padding-left: 16px; }
+    .phase li { font-size: 0.68em; color: #374151; margin-bottom: 6px; line-height: 1.4; }
+
+    /* KPIs */
+    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .kpi { text-align: center; padding: 24px 16px; background: var(--vengine-light); border-radius: 12px; }
+    .kpi .val { font-size: 2em; font-weight: 800; color: var(--vengine); display: block; }
+    .kpi .desc { font-size: 0.65em; color: var(--muted); margin-top: 4px; }
+
+    /* Principles */
+    .principles { display: flex; flex-direction: column; gap: 12px; }
+    .principle { display: flex; align-items: flex-start; gap: 16px; padding: 16px; background: #F9FAFB; border-radius: 10px; }
+    .principle .num { font-size: 1.4em; font-weight: 800; color: var(--vengine); min-width: 32px; }
+    .principle h4 { font-size: 0.8em; font-weight: 600; margin: 0 0 4px; }
+    .principle p { font-size: 0.68em; color: var(--muted); margin: 0; }
+
+    /* Positioning */
+    .position-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .vs { padding: 20px; border-radius: 12px; }
+    .vs.bad { background: #FEF2F2; border: 1px solid #FECACA; }
+    .vs.good { background: #F0FDF4; border: 1px solid #BBF7D0; }
+    .vs .head { font-size: 0.7em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+    .vs.bad .head { color: #DC2626; }
+    .vs.good .head { color: #16A34A; }
+    .vs li { font-size: 0.68em; color: #374151; margin-bottom: 6px; }
+
+    /* Slide labels */
+    .slide-label { font-size: 0.55em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--vengine); margin-bottom: 8px; display: block; }
+    .reveal h2 { font-size: 1.6em; font-weight: 700; color: var(--text); margin-bottom: 24px; }
+
+    /* Footer */
+    .footer { position: absolute; bottom: 20px; right: 40px; font-size: 0.55em; color: var(--muted); }
+    .footer span { color: var(--vengine); font-weight: 600; }
+  </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+  <!-- 1. TITLE -->
+  <section class="slide-title" data-background-gradient="linear-gradient(135deg, #6D28D9 0%, #8B5CF6 100%)">
+    <div style="padding: 20px 0;">
+      <div class="tag">Intern · März 2026</div>
+      <div style="font-size: 3.5em; margin-bottom: 16px;">🤖</div>
+      <h1 style="margin-bottom: 16px;">cobo</h1>
+      <p style="font-size: 1.3em; font-weight: 300;">Vision & Produktroadmap 2026</p>
+      <p style="font-size: 0.75em; opacity: 0.6; margin-top: 40px;">vengine GmbH · Vertraulich</p>
+    </div>
+  </section>
+
+  <!-- 2. PROBLEM -->
+  <section>
+    <span class="slide-label">Das Problem</span>
+    <h2>Servicetechniker verlieren täglich Stunden an unnötiger Suche</h2>
+    <div class="cards cards-3">
+      <div class="card">
+        <div class="icon">📋</div>
+        <h4>Verstreutes Wissen</h4>
+        <p>Handbücher, PDFs, Servicehistorien — verteilt auf verschiedene Systeme ohne zentralen Zugriff.</p>
+      </div>
+      <div class="card">
+        <div class="icon">⏱️</div>
+        <h4>Slow Time-to-Answer</h4>
+        <p>Bis eine Diagnose oder Reparaturanleitung gefunden ist, warten Techniker & Kunden im Schnitt 20+ Minuten.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔁</div>
+        <h4>Wiederholte Rückfragen</h4>
+        <p>Erfahrungswissen ist in Köpfen, nicht im System — dieselben Fragen werden immer wieder neu gestellt.</p>
+      </div>
+    </div>
+    <div class="footer"><span>cobo</span> · Vision & Roadmap 2026</div>
+  </section>
+
+  <!-- 3. VISION -->
+  <section>
+    <span class="slide-label">Unsere Vision</span>
+    <h2>Der Standard-Assistent für den Baumaschinen-Service</h2>
+    <div style="background: var(--vengine-light); border-left: 4px solid var(--vengine); border-radius: 0 12px 12px 0; padding: 24px 32px; margin-bottom: 24px;">
+      <p style="font-size: 0.9em; font-style: italic; color: var(--text); margin: 0; line-height: 1.6;">
+        „cobo ist der KI-Assistent, der jeden Servicetechniker im Baumaschinenbereich zum Experten macht — mit sofortigem Zugriff auf das richtige Wissen, zur richtigen Zeit, in der richtigen Sprache."
+      </p>
+    </div>
+    <div class="cards cards-2">
+      <div class="card purple">
+        <h4>🎯 Zielbild 2026</h4>
+        <p>cobo ist in mindestens 5 Kundenorganisationen produktiv im Einsatz. Techniker nutzen es täglich als primäres Werkzeug für Diagnosen und Reparaturen.</p>
+      </div>
+      <div class="card purple">
+        <h4>🌍 Langfristig</h4>
+        <p>Branchenübergreifend skalierbar: von Baumaschinen zu Landtechnik, Nutzfahrzeugen und weiteren Service-intensiven Industrien.</p>
+      </div>
+    </div>
+    <div class="footer"><span>cobo</span> · Vision & Roadmap 2026</div>
+  </section>
+
+  <!-- 4. POSITIONING -->
+  <section>
+    <span class="slide-label">Positionierung</span>
+    <h2>Was cobo ist — und was nicht</h2>
+    <div class="position-grid">
+      <div class="vs bad">
+        <div class="head">❌ cobo ist kein...</div>
+        <ul>
+          <li>Allgemeiner ChatGPT-Wrapper</li>
+          <li>Ersatz für das DMS / ERP</li>
+          <li>Generisches Help-Desk-Tool</li>
+          <li>One-size-fits-all Lösung</li>
+        </ul>
+      </div>
+      <div class="vs good">
+        <div class="head">✅ cobo ist...</div>
+        <ul>
+          <li>Domänenspezifisch für Baumaschinen-Service</li>
+          <li>Verknüpft mit echten internen Dokumenten</li>
+          <li>Lernfähig durch Servicehistorie</li>
+          <li>Kundenspezifisch konfigurierbar</li>
+          <li>Integrierbar in bestehende Systeme</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer"><span>cobo</span> · Vision & Roadmap 2026</div>
+  </section>
+
+  <!-- 5. PRINCIPLES -->
+  <section>
+    <span class="slide-label">Produktprinzipien</span>
+    <h2>Womit wir jede Entscheidung treffen</h2>
+    <div class="principles">
+      <div class="principle">
+        <div class="num">01</div>
+        <div>
+          <h4>Relevanz vor Vollständigkeit</h4>
+          <p>Die beste Antwort in 5 Sekunden schlägt die perfekte Antwort in 5 Minuten. Qualität der Quellen > Menge.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="num">02</div>
+        <div>
+          <h4>Vertrauen durch Transparenz</h4>
+          <p>Jede Antwort zeigt ihre Quelle. Techniker müssen wissen, woher das Wissen kommt.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="num">03</div>
+        <div>
+          <h4>Einfachheit ist ein Feature</h4>
+          <p>Kein Training, kein Onboarding-Aufwand. Wer eine SMS schreiben kann, kann cobo bedienen.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="num">04</div>
+        <div>
+          <h4>Daten bleiben beim Kunden</h4>
+          <p>DSGVO-konform, on-premise-fähig. Servicehistorie und Dokumente verlassen nicht die Kundensysteme.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><span>cobo</span> · Vision & Roadmap 2026</div>
+  </section>
+
+  <!-- 6. ROADMAP -->
+  <section>
+    <span class="slide-label">Produktroadmap</span>
+    <h2>Von der Beta zum skalierbaren Produkt</h2>
+    <div class="roadmap">
+      <div class="phase phase-now">
+        <div class="label">🟢 Jetzt · Q1 2026</div>
+        <h3>MVP & erste Kunden</h3>
+        <ul>
+          <li>Chat-Interface mit Dokumentensuche</li>
+          <li>PDF-Upload & -Indexierung</li>
+          <li>Servicehistorie-Integration</li>
+          <li>Rollenbasierter Zugriff (Techniker / Disponent / Admin)</li>
+          <li>Google SSO · DSGVO-konform</li>
+          <li>Pilotbetrieb bei KK</li>
+        </ul>
+      </div>
+      <div class="phase phase-q2">
+        <div class="label">🟣 Q2 2026</div>
+        <h3>Produktreife & Skalierung</h3>
+        <ul>
+          <li>Self-Service Onboarding</li>
+          <li>Multi-Tenant-Architektur</li>
+          <li>API-Integration (Werkstatt-Software)</li>
+          <li>Feedback-Loop & kontinuierliches Lernen</li>
+          <li>Nutzungsanalyse-Dashboard</li>
+          <li>Mobile-optimiertes Interface</li>
+        </ul>
+      </div>
+      <div class="phase phase-h2">
+        <div class="label">🟠 H2 2026</div>
+        <h3>Expansion & Intelligenz</h3>
+        <ul>
+          <li>Proaktive Wartungshinweise (Push)</li>
+          <li>Voice-Interface für Werkstatt</li>
+          <li>Mehrsprachigkeit (EN, FR)</li>
+          <li>Branchenausdehnung (Landtechnik)</li>
+          <li>White-Label-Option</li>
+          <li>Marktplatz für Wissensmodule</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer"><span>cobo</span> · Vision & Roadmap 2026</div>
+  </section>
+
+  <!-- 7. SUCCESS METRICS -->
+  <section>
+    <span class="slide-label">Erfolgsmessung</span>
+    <h2>So messen wir Erfolg</h2>
+    <div class="kpis">
+      <div class="kpi">
+        <span class="val">5+</span>
+        <span class="desc">Zahlende Kunden bis Ende 2026</span>
+      </div>
+      <div class="kpi">
+        <span class="val">70%</span>
+        <span class="desc">Anfragen ohne menschliche Eskalation beantwortet</span>
+      </div>
+      <div class="kpi">
+        <span class="val">&lt;5s</span>
+        <span class="desc">Durchschnittliche Antwortzeit</span>
+      </div>
+      <div class="kpi">
+        <span class="val">4.0+</span>
+        <span class="desc">NPS / Nutzerzufriedenheit (von 5)</span>
+      </div>
+    </div>
+    <div style="margin-top: 24px; padding: 16px 20px; background: #F9FAFB; border-radius: 10px; font-size: 0.65em; color: var(--muted);">
+      <strong style="color: var(--text);">Nächste Meilensteine:</strong> &nbsp;Pilotfeedback KK auswerten (März) · Preismodell finalisieren (April) · Zweiter Pilotkunde onboarden (Mai)
+    </div>
+    <div class="footer"><span>cobo</span> · Vision & Roadmap 2026</div>
+  </section>
+
+  <!-- 8. NEXT STEPS -->
+  <section>
+    <span class="slide-label">Nächste Schritte</span>
+    <h2>Was wir als Team jetzt entscheiden müssen</h2>
+    <div class="cards cards-2">
+      <div class="card purple">
+        <div class="icon">💰</div>
+        <h4>Preismodell</h4>
+        <p>Per Seat? Per Request? Flat-Fee? → Vorschlag: gestaffelte Flat-Fee nach Unternehmensgröße (S/M/L).</p>
+      </div>
+      <div class="card purple">
+        <div class="icon">🏗️</div>
+        <h4>Tech-Stack Entscheidung</h4>
+        <p>Eigene RAG-Pipeline vs. externe Anbieter. Trade-off: Kontrolle vs. Speed-to-Market.</p>
+      </div>
+      <div class="card purple">
+        <div class="icon">🤝</div>
+        <h4>Vertriebsstrategie</h4>
+        <p>Direct Sales (Fabian/Lea) oder Partner-Kanal (Händlernetz)? Erstgespräche mit Arend klären.</p>
+      </div>
+      <div class="card purple">
+        <div class="icon">🔒</div>
+        <h4>Datenschutz-Framework</h4>
+        <p>DSGVO-Dokumentation für Enterprise-Kunden. DPA-Template und Data-Residency-Optionen definieren.</p>
+      </div>
+    </div>
+    <div class="footer"><span>cobo</span> · Vision & Roadmap 2026</div>
+  </section>
+
+  <!-- 9. CLOSING -->
+  <section data-background-gradient="linear-gradient(135deg, #6D28D9 0%, #8B5CF6 100%)">
+    <div style="text-align: center; color: white; padding: 40px 0;">
+      <div style="font-size: 3em; margin-bottom: 20px;">🚀</div>
+      <h2 style="color: white; font-size: 2em; font-weight: 800; margin-bottom: 16px;">cobo macht jeden Techniker<br>zum Experten.</h2>
+      <p style="color: rgba(255,255,255,0.7); font-size: 0.9em;">vengine GmbH · März 2026</p>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    controls: true,
+    progress: true,
+    center: false,
+    transition: 'fade',
+    transitionSpeed: 'fast',
+    width: 1200,
+    height: 700,
+    margin: 0.05,
+    plugins: []
+  });
+</script>
+</body>
+</html>
