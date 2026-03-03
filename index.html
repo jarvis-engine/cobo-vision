@@ -7,146 +7,273 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --vengine: #7C3AED;
-      --vengine-dark: #6D28D9;
-      --vengine-light: #EDE9FE;
-      --text: #0F0F1A;
-      --muted: #6B7280;
-    }
-    .reveal { font-family: 'Inter', sans-serif; }
-    .reveal h1, .reveal h2, .reveal h3 { font-family: 'Inter', sans-serif; letter-spacing: -0.03em; }
-    .reveal .slides section { text-align: left; }
-
-    /* Title slide */
-    .slide-title { background: linear-gradient(135deg, #6D28D9 0%, #8B5CF6 100%); color: white !important; }
-    .slide-title h1 { color: white !important; font-size: 3em; font-weight: 800; }
-    .slide-title p { color: rgba(255,255,255,0.8) !important; font-size: 1.1em; }
-    .slide-title .tag { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 4px 16px; font-size: 0.7em; margin-bottom: 20px; }
-
-    /* Section header */
-    .slide-section { background: var(--vengine); color: white !important; }
-    .slide-section h2 { color: white !important; font-size: 2.5em; font-weight: 700; }
-    .slide-section .num { font-size: 5em; font-weight: 800; opacity: 0.15; position: absolute; top: -20px; left: 40px; }
-
-    /* Cards */
-    .cards { display: grid; gap: 16px; }
-    .cards-2 { grid-template-columns: 1fr 1fr; }
-    .cards-3 { grid-template-columns: 1fr 1fr 1fr; }
-    .card { background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 12px; padding: 24px; }
-    .card.purple { background: var(--vengine-light); border-color: #C4B5FD; }
-    .card .icon { font-size: 1.8em; margin-bottom: 10px; }
-    .card h4 { font-size: 0.85em; font-weight: 600; color: var(--text); margin: 0 0 8px; }
-    .card p { font-size: 0.7em; color: var(--muted); margin: 0; line-height: 1.5; }
-
-    /* Roadmap */
-    .roadmap { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
-    .phase { border-radius: 12px; padding: 24px; }
-    .phase-now { background: #F0FDF4; border: 2px solid #86EFAC; }
-    .phase-q2 { background: var(--vengine-light); border: 2px solid #C4B5FD; }
-    .phase-h2 { background: #FFF7ED; border: 2px solid #FED7AA; }
-    .phase .label { font-size: 0.6em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
-    .phase-now .label { color: #16A34A; }
-    .phase-q2 .label { color: var(--vengine); }
-    .phase-h2 .label { color: #EA580C; }
-    .phase h3 { font-size: 0.9em; font-weight: 700; color: var(--text); margin: 0 0 12px; }
-    .phase ul { margin: 0; padding-left: 16px; }
-    .phase li { font-size: 0.68em; color: #374151; margin-bottom: 6px; line-height: 1.4; }
-
-    /* KPIs */
-    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    .kpi { text-align: center; padding: 24px 16px; background: var(--vengine-light); border-radius: 12px; }
-    .kpi .val { font-size: 2em; font-weight: 800; color: var(--vengine); display: block; }
-    .kpi .desc { font-size: 0.65em; color: var(--muted); margin-top: 4px; }
-
-    /* Principles */
-    .principles { display: flex; flex-direction: column; gap: 12px; }
-    .principle { display: flex; align-items: flex-start; gap: 16px; padding: 16px; background: #F9FAFB; border-radius: 10px; }
-    .principle .num { font-size: 1.4em; font-weight: 800; color: var(--vengine); min-width: 32px; }
-    .principle h4 { font-size: 0.8em; font-weight: 600; margin: 0 0 4px; }
-    .principle p { font-size: 0.68em; color: var(--muted); margin: 0; }
-
-    /* Positioning */
-    .position-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .vs { padding: 20px; border-radius: 12px; }
-    .vs.bad { background: #FEF2F2; border: 1px solid #FECACA; }
-    .vs.good { background: #F0FDF4; border: 1px solid #BBF7D0; }
-    .vs .head { font-size: 0.7em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
-    .vs.bad .head { color: #DC2626; }
-    .vs.good .head { color: #16A34A; }
-    .vs li { font-size: 0.68em; color: #374151; margin-bottom: 6px; }
-
-    /* Slide labels */
-    .slide-label { font-size: 0.55em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--vengine); margin-bottom: 8px; display: block; }
-    .reveal h2 { font-size: 1.6em; font-weight: 700; color: var(--text); margin-bottom: 24px; }
-
-    /* Footer */
-    .footer { position: absolute; bottom: 20px; right: 40px; font-size: 0.55em; color: var(--muted); }
-    .footer span { color: var(--vengine); font-weight: 600; }
-  </style>
-  <style>
-    #pw-overlay {
-      position: fixed; inset: 0; z-index: 9999;
-      background: linear-gradient(135deg, #6D28D9 0%, #8B5CF6 100%);
-      display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 24px;
-    }
-    #pw-overlay .box {
-      background: white; border-radius: 16px; padding: 40px 48px; width: 380px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
-    }
-    #pw-overlay h2 { font-family: 'Inter',sans-serif; font-size: 1.2em; font-weight: 700; color: #0F0F1A; margin: 0 0 6px; }
-    #pw-overlay p { font-family: 'Inter',sans-serif; font-size: 0.8em; color: #6B7280; margin: 0 0 20px; }
-    #pw-overlay input {
-      width: 100%; padding: 10px 14px; border: 1px solid #E5E7EB; border-radius: 8px;
-      font-size: 0.9em; font-family: 'Inter',sans-serif; outline: none; box-sizing: border-box;
-      margin-bottom: 12px; transition: border-color 0.2s;
-    }
-    #pw-overlay input:focus { border-color: #7C3AED; }
-    #pw-overlay button {
-      width: 100%; padding: 11px; background: #7C3AED; color: white; border: none;
-      border-radius: 8px; font-size: 0.9em; font-weight: 600; cursor: pointer;
-      font-family: 'Inter',sans-serif; transition: background 0.2s;
-    }
-    #pw-overlay button:hover { background: #6D28D9; }
-    #pw-overlay .err { font-size: 0.75em; color: #EF4444; background: #FEF2F2; padding: 8px 12px; border-radius: 8px; border: 1px solid #FECACA; display: none; margin-top: 8px; }
-    #pw-overlay .logo { font-size: 2.5em; }
-    #pw-overlay .brand { color: white; font-family: 'Inter',sans-serif; font-size: 1.4em; font-weight: 700; }
-  </style>
-  <style>
-    #pw-overlay {
-      position: fixed; inset: 0; z-index: 9999;
-      background: linear-gradient(135deg, #6D28D9 0%, #8B5CF6 100%);
-      display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 24px;
-    }
-    #pw-overlay .box { background: white; border-radius: 16px; padding: 40px 48px; width: 380px; box-shadow: 0 20px 60px rgba(0,0,0,0.25); }
-    #pw-overlay h2 { font-family: 'Inter',sans-serif; font-size: 1.2em; font-weight: 700; color: #0F0F1A; margin: 0 0 6px; }
-    #pw-overlay p { font-family: 'Inter',sans-serif; font-size: 0.8em; color: #6B7280; margin: 0 0 20px; }
-    #pw-overlay input { width: 100%; padding: 10px 14px; border: 1px solid #E5E7EB; border-radius: 8px; font-size: 0.9em; font-family: 'Inter',sans-serif; outline: none; box-sizing: border-box; margin-bottom: 12px; transition: border-color 0.2s; }
-    #pw-overlay input:focus { border-color: #7C3AED; }
-    #pw-overlay button { width: 100%; padding: 11px; background: #7C3AED; color: white; border: none; border-radius: 8px; font-size: 0.9em; font-weight: 600; cursor: pointer; font-family: 'Inter',sans-serif; }
-    #pw-overlay button:hover { background: #6D28D9; }
-    #pw-overlay .err { font-size: 0.75em; color: #EF4444; background: #FEF2F2; padding: 8px 12px; border-radius: 8px; border: 1px solid #FECACA; display: none; margin-top: 8px; }
-    #pw-overlay .logo { font-size: 2.5em; }
-    #pw-overlay .brand { color: white; font-family: 'Inter',sans-serif; font-size: 1.4em; font-weight: 700; }
+    :root { --v:#7C3AED; --vd:#6D28D9; --vl:#8B5CF6; --fl:#EDE9FE; --tx:#0F0F1A; --mu:#6B7280; --bd:#E5E7EB; }
+    .reveal { font-family:'Inter',sans-serif; }
+    .reveal h1,.reveal h2,.reveal h3,.reveal h4 { font-family:'Inter',sans-serif; letter-spacing:-0.03em; }
+    .reveal .slides section { text-align:left; }
+    .lbl { font-size:.55em; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:var(--v); display:block; margin-bottom:8px; }
+    .reveal h2 { font-size:1.55em; font-weight:700; color:var(--tx); margin-bottom:20px; }
+    .g2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .g3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
+    .g4 { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .card { background:#F9FAFB; border:1px solid var(--bd); border-radius:12px; padding:20px; }
+    .card.p { background:var(--fl); border-color:#C4B5FD; }
+    .card h4 { font-size:.82em; font-weight:600; color:var(--tx); margin:0 0 7px; }
+    .card p { font-size:.68em; color:var(--mu); margin:0; line-height:1.5; }
+    .card .ic { font-size:1.6em; margin-bottom:8px; }
+    .phase { border-radius:12px; padding:20px; }
+    .ph-now { background:#F0FDF4; border:2px solid #86EFAC; }
+    .ph-q2 { background:var(--fl); border:2px solid #C4B5FD; }
+    .ph-h2 { background:#FFF7ED; border:2px solid #FED7AA; }
+    .phase .pl { font-size:.58em; font-weight:700; text-transform:uppercase; letter-spacing:.1em; margin-bottom:8px; }
+    .ph-now .pl { color:#16A34A; } .ph-q2 .pl { color:var(--v); } .ph-h2 .pl { color:#EA580C; }
+    .phase h3 { font-size:.88em; font-weight:700; color:var(--tx); margin:0 0 10px; }
+    .phase ul { margin:0; padding-left:16px; }
+    .phase li { font-size:.66em; color:#374151; margin-bottom:5px; line-height:1.4; }
+    .kpi { text-align:center; padding:20px 12px; background:var(--fl); border-radius:12px; }
+    .kpi .val { font-size:1.9em; font-weight:800; color:var(--v); display:block; }
+    .kpi .desc { font-size:.62em; color:var(--mu); margin-top:4px; }
+    .vs { padding:18px; border-radius:12px; }
+    .vs.bad { background:#FEF2F2; border:1px solid #FECACA; }
+    .vs.ok { background:#F0FDF4; border:1px solid #BBF7D0; }
+    .vs .hd { font-size:.62em; font-weight:700; text-transform:uppercase; letter-spacing:.08em; margin-bottom:10px; }
+    .vs.bad .hd { color:#DC2626; } .vs.ok .hd { color:#16A34A; }
+    .vs li { font-size:.67em; color:#374151; margin-bottom:5px; }
+    .ft { position:absolute; bottom:18px; right:36px; font-size:.52em; color:var(--mu); }
+    .ft span { color:var(--v); font-weight:600; }
   </style>
 </head>
 <body>
+<div class="reveal">
+<div class="slides">
+
+<!-- 1 TITLE -->
+<section data-background-gradient="linear-gradient(135deg,#6D28D9 0%,#8B5CF6 100%)">
+  <div style="padding:20px 0;color:white;">
+    <div style="display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:4px 16px;font-size:.7em;margin-bottom:20px;">Intern &middot; M&auml;rz 2026</div>
+    <div style="font-size:3.2em;margin-bottom:14px;">&#x1F916;</div>
+    <h1 style="color:white;font-size:2.8em;font-weight:800;margin-bottom:14px;">cobo</h1>
+    <p style="font-size:1.2em;font-weight:300;color:rgba(255,255,255,.85);">Vision &amp; Produktroadmap 2026</p>
+    <p style="font-size:.72em;opacity:.5;margin-top:40px;">vengine GmbH &middot; Vertraulich</p>
+  </div>
+</section>
+
+<!-- 2 PROBLEM -->
+<section>
+  <span class="lbl">Das Problem</span>
+  <h2>Wertvolles Wissen ist nicht dort, wo es gebraucht wird</h2>
+  <div class="g3">
+    <div class="card"><div class="ic">&#x1F4CB;</div><h4>Verstreutes Wissen</h4><p>Handb&uuml;cher, PDFs, Servicehistorien &mdash; verteilt auf verschiedene Systeme, kein zentraler Zugriff.</p></div>
+    <div class="card"><div class="ic">&#x23F1;&#xFE0F;</div><h4>Langsame Entscheidungen</h4><p>Disponenten, Mechaniker und F&uuml;hrungskr&auml;fte verlieren t&auml;glich Zeit durch R&uuml;ckfragen und Suche.</p></div>
+    <div class="card"><div class="ic">&#x1F9E0;</div><h4>Wissen klebt an Personen</h4><p>Erfahrungswissen ist in K&ouml;pfen, nicht im System &mdash; Fluktuation und Einarbeitung werden zum Risiko.</p></div>
+  </div>
+  <div class="ft"><span>cobo</span> &middot; Vision &amp; Roadmap 2026</div>
+</section>
+
+<!-- 3 PERSONAS -->
+<section>
+  <span class="lbl">Personas &amp; Use Cases v1.0</span>
+  <h2>Drei Nutzergruppen &mdash; ein Werkzeug</h2>
+  <div class="g3">
+    <div class="card" style="border-top:3px solid var(--v);">
+      <div class="ic">&#x1F4DE;</div>
+      <h4>Disponent</h4>
+      <p style="color:#374151;margin-bottom:10px;">&#x2192; Erste technische Einsch&auml;tzung f&uuml;r Kunden<br>&#x2192; Pr&auml;zisere Einsatzplanung<br>&#x2192; Weniger Fehleins&auml;tze<br>&#x2192; Weniger R&uuml;ckfragen</p>
+      <div style="font-size:.6em;color:var(--v);background:var(--fl);border-radius:6px;padding:6px 10px;">&#x26A0;&#xFE0F; Bei KK: Service-Disponent &amp; Ersatzteil-Disponent getrennt</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--v);">
+      <div class="ic">&#x1F527;</div>
+      <h4>Service-Mechaniker</h4>
+      <p style="color:#374151;">&#x2192; Schnellere Diagnose<br>&#x2192; Schritt-f&uuml;r-Schritt-Reparaturanleitungen<br>&#x2192; K&uuml;rzere Reparaturzeiten<br>&#x2192; Automatisierte Teilevorschl&auml;ge</p>
+    </div>
+    <div class="card" style="border-top:3px solid var(--v);">
+      <div class="ic">&#x1F4C8;</div>
+      <h4>Gesch&auml;ftsf&uuml;hrung &amp; Serviceleitung</h4>
+      <p style="color:#374151;">&#x2192; Unabh&auml;ngigkeit von Experten-Wissen<br>&#x2192; H&ouml;here Kundenzufriedenheit<br>&#x2192; Qualifizierung junger Fachkr&auml;fte<br>&#x2192; H&ouml;herer Kundendienst-Level</p>
+    </div>
+  </div>
+  <div class="ft"><span>cobo</span> &middot; Vision &amp; Roadmap 2026</div>
+</section>
+
+<!-- 4 FEATURES -->
+<section>
+  <span class="lbl">Features v1.0</span>
+  <h2>Was cobo heute kann</h2>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+    <div class="card p" style="padding:14px 18px;"><div style="font-size:.72em;font-weight:600;color:#374151;">&#x1F4DA; Handb&uuml;cher durchsuchen</div></div>
+    <div class="card p" style="padding:14px 18px;"><div style="font-size:.72em;font-weight:600;color:#374151;">&#x1F527; Wartungspl&auml;ne finden</div></div>
+    <div class="card p" style="padding:14px 18px;"><div style="font-size:.72em;font-weight:600;color:#374151;">&#x23F0; Wartungsintervalle anleiten</div></div>
+    <div class="card p" style="padding:14px 18px;"><div style="font-size:.72em;font-weight:600;color:#374151;">&#x1F4CB; Servicehistorie abrufen</div></div>
+    <div class="card p" style="padding:14px 18px;"><div style="font-size:.72em;font-weight:600;color:#374151;">&#x1F50D; Diagnose erhalten</div></div>
+    <div class="card p" style="padding:14px 18px;"><div style="font-size:.72em;font-weight:600;color:#374151;">&#x1F527; Ersatzteile empfehlen</div></div>
+    <div class="card p" style="padding:14px 18px;"><div style="font-size:.72em;font-weight:600;color:#374151;">&#x1F9F0; Verbrauchsmaterial identifizieren</div></div>
+    <div class="card p" style="padding:14px 18px;"><div style="font-size:.72em;font-weight:600;color:#374151;">&#x1F4DD; Reparaturschritte empfehlen</div></div>
+    <div class="card p" style="padding:14px 18px;"><div style="font-size:.72em;font-weight:600;color:#374151;">&#x23F1; Arbeitszeit sch&auml;tzen</div></div>
+  </div>
+  <div class="ft"><span>cobo</span> &middot; Vision &amp; Roadmap 2026</div>
+</section>
+
+<!-- 5 VISION -->
+<section>
+  <span class="lbl">Unsere Vision</span>
+  <h2>Die KI-Plattform f&uuml;r den Baumaschinen-Service</h2>
+  <div style="background:var(--fl);border-left:4px solid var(--v);border-radius:0 12px 12px 0;padding:22px 28px;margin-bottom:20px;">
+    <p style="font-size:.88em;font-style:italic;color:var(--tx);margin:0;line-height:1.65;">&bdquo;cobo gibt jeder Rolle in der Baumaschinen-Serviceorganisation &mdash; vom Mechaniker bis zur Gesch&auml;ftsf&uuml;hrung &mdash; sofortigen Zugriff auf das richtige Wissen, zur richtigen Zeit. Damit wird der gesamte Kundendienst schneller, pr&auml;ziser und unabh&auml;ngiger von einzelnen Personen.&ldquo;</p>
+  </div>
+  <div class="g2">
+    <div class="card p"><h4>&#x1F3AF; Zielbild 2026</h4><p>cobo ist in mindestens 5 Kundenorganisationen produktiv im Einsatz. Alle drei Nutzergruppen sind aktive Daily-User.</p></div>
+    <div class="card p"><h4>&#x1F4CD; Fokus</h4><p>Marktf&uuml;hrer im Baumaschinen-Service-Segment. Erst Tiefe, dann selektive Breite &mdash; kein Branchen-Hopping.</p></div>
+  </div>
+  <div class="ft"><span>cobo</span> &middot; Vision &amp; Roadmap 2026</div>
+</section>
+
+<!-- 6 POSITIONING -->
+<section>
+  <span class="lbl">Positionierung</span>
+  <h2>Was cobo ist &mdash; und was nicht</h2>
+  <div class="g2">
+    <div class="vs bad">
+      <div class="hd">&#x274C; cobo ist kein...</div>
+      <ul>
+        <li>Allgemeiner ChatGPT-Wrapper</li>
+        <li>Ersatz f&uuml;r DMS / ERP</li>
+        <li>Generisches Help-Desk-Tool</li>
+        <li>Horizontal in alle Branchen skalierbar</li>
+      </ul>
+    </div>
+    <div class="vs ok">
+      <div class="hd">&#x2705; cobo ist...</div>
+      <ul>
+        <li>Dom&auml;nenspezifisch: Fokus Baumaschinen</li>
+        <li>F&uuml;r alle Rollen in der Serviceorganisation</li>
+        <li>Lernf&auml;hig durch Servicehistorie</li>
+        <li>Kundenspezifisch konfigurierbar</li>
+        <li>Integrierbar in bestehende Systeme</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft"><span>cobo</span> &middot; Vision &amp; Roadmap 2026</div>
+</section>
+
+<!-- 7 ROADMAP -->
+<section>
+  <span class="lbl">Produktroadmap</span>
+  <h2>Von der Beta zum skalierbaren Produkt</h2>
+  <div class="g3">
+    <div class="phase ph-now">
+      <div class="pl">&#x1F7E2; Jetzt &middot; Q1 2026</div>
+      <h3>MVP &amp; erste Kunden</h3>
+      <ul>
+        <li>Chat mit Dokumentensuche</li>
+        <li>PDF-Upload &amp; Indexierung</li>
+        <li>Servicehistorie-Integration</li>
+        <li>Rollen: Mechaniker / Disponent / Admin</li>
+        <li>Google SSO &middot; DSGVO-konform</li>
+        <li>Pilotbetrieb bei Kurt K&ouml;nig</li>
+      </ul>
+    </div>
+    <div class="phase ph-q2">
+      <div class="pl">&#x1F7E3; Q2 2026</div>
+      <h3>Produktreife &amp; Skalierung</h3>
+      <ul>
+        <li>Self-Service Onboarding</li>
+        <li>Multi-Tenant-Architektur</li>
+        <li>API-Integration (Werkstatt-Software)</li>
+        <li>Feedback-Loop &amp; Lernmechanismus</li>
+        <li>Analyse-Dashboard (Serviceleitung)</li>
+        <li>Mobile-optimiertes Interface</li>
+      </ul>
+    </div>
+    <div class="phase ph-h2">
+      <div class="pl">&#x1F7E0; H2 2026</div>
+      <h3>Expansion &amp; Intelligenz</h3>
+      <ul>
+        <li>Proaktive Wartungshinweise</li>
+        <li>Voice-Interface f&uuml;r Werkstatt</li>
+        <li>White-Label f&uuml;r H&auml;ndlernetze</li>
+        <li>Vertiefung ERP/DMS-Integration</li>
+        <li>Strategischer Marktausbau</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft"><span>cobo</span> &middot; Vision &amp; Roadmap 2026</div>
+</section>
+
+<!-- 8 MARKT -->
+<section>
+  <span class="lbl">Markt &amp; Fokus</span>
+  <h2>Jetzt: Baumaschinen. Sp&auml;ter: selektiv.</h2>
+  <div class="g2" style="align-items:start;">
+    <div>
+      <div class="card" style="border-top:3px solid #16A34A;margin-bottom:14px;">
+        <div style="font-size:.6em;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#16A34A;margin-bottom:8px;">&#x1F7E2; Aktueller Fokus</div>
+        <h4 style="font-size:.92em;margin-bottom:10px;">Baumaschinen-Service &mdash; DACH</h4>
+        <ul style="font-size:.67em;color:#374151;padding-left:16px;line-height:1.6;margin:0;">
+          <li>Servicewerkst&auml;tten &amp; H&auml;ndler</li>
+          <li>Hersteller-Serviceorganisationen</li>
+          <li>Baumaschinenverleiher mit eigenem Service</li>
+        </ul>
+      </div>
+      <div style="font-size:.63em;color:#6B7280;padding:12px 16px;background:#F9FAFB;border-radius:8px;">&#x1F3AF; Pilotmarkt: Deutschland. Bekannte Player, klarer Bedarf, kurze Entscheidungswege.</div>
+    </div>
+    <div class="card" style="border-top:3px solid #D1D5DB;opacity:.75;">
+      <div style="font-size:.6em;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#9CA3AF;margin-bottom:8px;">&#x23F3; Langfristiges Potenzial</div>
+      <h4 style="font-size:.92em;margin-bottom:10px;color:#6B7280;">Wenn Baumaschinen etabliert ist</h4>
+      <ul style="font-size:.67em;color:#9CA3AF;padding-left:16px;line-height:1.6;margin:0;">
+        <li>Landmaschinen (&#xe4;hnliche Logik, gleiche Zielgruppe)</li>
+        <li>Europ&auml;ische Marktausdehnung</li>
+      </ul>
+      <div style="margin-top:12px;font-size:.6em;color:#D1D5DB;font-style:italic;">Kein aktives Ziel f&uuml;r 2026.</div>
+    </div>
+  </div>
+  <div class="ft"><span>cobo</span> &middot; Vision &amp; Roadmap 2026</div>
+</section>
+
+<!-- 9 KPIs -->
+<section>
+  <span class="lbl">Erfolgsmessung</span>
+  <h2>So messen wir Erfolg</h2>
+  <div class="g4">
+    <div class="kpi"><span class="val">5+</span><span class="desc">Zahlende Kunden bis Ende 2026</span></div>
+    <div class="kpi"><span class="val">70%</span><span class="desc">Anfragen ohne menschliche Eskalation</span></div>
+    <div class="kpi"><span class="val">&lt;5s</span><span class="desc">Durchschnittliche Antwortzeit</span></div>
+    <div class="kpi"><span class="val">4.0+</span><span class="desc">Nutzerzufriedenheit (von 5)</span></div>
+  </div>
+  <div style="margin-top:20px;padding:14px 18px;background:#F9FAFB;border-radius:10px;font-size:.63em;color:var(--mu);">
+    <strong style="color:var(--tx);">N&auml;chste Meilensteine:</strong> &nbsp;Pilotfeedback KK auswerten (M&auml;rz) &middot; Preismodell finalisieren (April) &middot; Zweiter Pilotkunde onboarden (Mai)
+  </div>
+  <div class="ft"><span>cobo</span> &middot; Vision &amp; Roadmap 2026</div>
+</section>
+
+<!-- 10 OPEN QUESTIONS -->
+<section>
+  <span class="lbl">Offene Entscheidungen</span>
+  <h2>Was wir als Team jetzt entscheiden m&uuml;ssen</h2>
+  <div class="g2">
+    <div class="card p"><div class="ic">&#x1F4B0;</div><h4>Preismodell</h4><p>Per Seat? Flat-Fee? &rarr; Vorschlag: gestaffelte Flat-Fee nach Unternehmensgr&ouml;&szlig;e (S/M/L).</p></div>
+    <div class="card p"><div class="ic">&#x1F465;</div><h4>Rollenstrategie</h4><p>Wie bilden wir KK-spezifische Rollen (Service- vs. Ersatzteil-Disponent) generisch ab? Flexible Labels im Onboarding?</p></div>
+    <div class="card p"><div class="ic">&#x1F91D;</div><h4>Vertriebsstrategie</h4><p>Direct Sales oder Partner-Kanal (H&auml;ndlernetz)? Buyer ist GF / Serviceleitung &mdash; nicht Techniker.</p></div>
+    <div class="card p"><div class="ic">&#x1F512;</div><h4>Datenschutz-Framework</h4><p>DSGVO-Dokumentation, DPA-Template und Data-Residency-Optionen f&uuml;r Enterprise-Kunden.</p></div>
+  </div>
+  <div class="ft"><span>cobo</span> &middot; Vision &amp; Roadmap 2026</div>
+</section>
+
+<!-- 11 CLOSING -->
+<section data-background-gradient="linear-gradient(135deg,#6D28D9 0%,#8B5CF6 100%)">
+  <div style="text-align:center;color:white;padding:40px 0;">
+    <div style="font-size:3em;margin-bottom:18px;">&#x1F916;</div>
+    <h2 style="color:white;font-size:2em;font-weight:800;margin-bottom:14px;">Der KI-Standard f&uuml;r den<br>Baumaschinen-Service.</h2>
+    <p style="color:rgba(255,255,255,.65);font-size:.88em;">vengine GmbH &middot; M&auml;rz 2026</p>
+  </div>
+</section>
+
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
 <script>
-  Reveal.initialize({
-    hash: true,
-    controls: true,
-    progress: true,
-    center: false,
-    transition: 'fade',
-    transitionSpeed: 'fast',
-    width: 1200,
-    height: 700,
-    margin: 0.05,
-    plugins: []
-  });
+  Reveal.initialize({ hash:true, controls:true, progress:true, center:false, transition:'fade', transitionSpeed:'fast', width:1200, height:700, margin:0.05 });
 </script>
 </body>
 </html>
